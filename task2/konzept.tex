@@ -5,6 +5,14 @@
 Darstellung anhand der Abbildungen aller erstellten Wireframes oder Mockups und ggf. der Interaktionsabläufe als Flussdiagramm inkl. Beschreibung bzw. Erläuterung der dahinter stehenden Überlegungen in den folgenden Unterkapiteln. Der Zusammenhang der einzelnen Bildschirmmasken und Interaktionsfluss durch das Programm soll klar hervorgehen.]
 
 \subsection{Desktop Web Interface}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=\textwidth]{img/web_uebersicht}
+\caption{Web \"Ubersicht}
+\label{fig:web_uebersicht}
+\end{figure}
+
 \subsection{Mobiles User Interface}
 \subsection{Detailfragen}
 
@@ -25,8 +33,28 @@ Darstellung anhand der Abbildungen aller erstellten Wireframes oder Mockups und 
 
 \vspace{2mm}
 
+Der Benutzer sollte auf einen Blick alle Ausgaben eines Monats sehen k\"onnen. Diese
+werden auf der zentralen \"Ubersichtsseite chronologisch angeordnet dargestellt.
 
-[Max. 250 Wörter Wireframes zur Illustration]
+Ebenfalls sind einfache monatliche Zusammenfassungen wichtig; dazu wird in der
+\"Ubersichtsseite am Ende jedes Monats eine Zusammenfassungszeile eingeblendet.
+Die Zusammenfassung enth\"alt Informationen wie zum Beispiel die Summe aller monatlichen
+Ausgaben, dessen Differenz zur festgelegten Budgetgrenze, und Vergleichswerte zu den Ausgaben
+anderer Monate. Diese Zeile wird durch Schriftart und Hintergrundfarbe hervorgehoben.
+Bei positiver Differenz (Grenze nicht \"uberschritten) ist die Differenz gr\"un dargestellt,
+sonst rot.
+
+Eintr\"age, die \"uber die Monatsgrenze hinausgehen werden durch rote Hintergrundfarbe
+markiert.
+
+Die Diagramme stellen vor allem Ausgaben pro Monat dar und sind als Balkendiagramme realisiert.
+In diesem Zusammenhang ist nat\"urlich die Darstellung der monatlichen Obergrenze wichtig;
+diese wird als Linie im Balkendiagramm eingezeichnet. Ebenfalls sind die Proportionen der Kategorien
+von Interesse, deshalb wird ein Balken pro Kategorie eingef\"rbt.
+
+Zur \"ubersichtlicheren Darstellung der Entwicklung von einzelnen Kategorien k\"onnen
+diese auch in einem gefilterten Diagramm dargestellt werden (andere Kategorien werden
+ausgeblendet).
 
 
 

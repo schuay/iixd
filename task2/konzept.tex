@@ -6,12 +6,76 @@ Darstellung anhand der Abbildungen aller erstellten Wireframes oder Mockups und 
 
 \subsection{Desktop Web Interface}
 
+\subsubsection{Navigation} \label{subsubsection:navigation}
+
+% TODO: Inline figure
+
+Die Navigationsleiste wird auf jedem Screen entlang der linken Bildschirmkante
+angezeigt. Sie stellt eine Navigationshierarchie dar, die vom Benutzer geklickt
+werden kann. Das aktuelle Element wird nach Applikationskonvention schwarz
+dargestellt, andere Seiten dunkelgrau.  Momentan ist die Navigation relativ
+spärlich besetzt, sie bietet aber reichlich Platz für eventuelle Erweiterungen
+der Applikation.
+
+\subsubsection{Aktuelles Monat} \label{subsubsection:aktuelles_monat}
+
+% TODO: Inline figure
+
+Ähnlich zur Navigationsleiste wird auf jedem Screen unten entlang der linken
+Bildschirmkante eine kurze Zusammenfassung des aktuellen Monats dargestellt.
+Der Benutzer erfährt auf einen Blick wichtige Kennzahlen wie zum Beispiel die
+aktuell eingestellt Budgetgrenze, die bisherigen Monatsausgaben, das
+verbleibende Budget, und Vergleiche mit dem Vormonat beziehungsweise dem
+Durchschnitt aller Monate.
+
+Wenn möglich werden diese Kennzahlen sowohl als Absolutbetrag sowie als
+Prozentzahl dargestellt. Negative Abweichungen werden grün dargestellt (= man
+hat im Vergleich dieses Monat gespart), positive mit roter Schriftfarbe.
+
+\subsubsection{Übersicht}
+
 \begin{figure}[htl]
 \centering
 \includegraphics[width=\textwidth]{img/web_uebersicht}
 \caption{Web \"Ubersicht}
 \label{fig:web_uebersicht}
 \end{figure}
+
+In der Übersicht werden aggregierte Informationen zu den Finanzen dargestellt.
+Dieser Screen kann durch einen Click auf 'Übersicht' innerhalb der
+Navigationsleiste erreicht werden.
+
+Auf der linken Seite des Bildschirms wird weiterhin (nach
+Applikationskonvention) oben die Navigationsleiste (siehe Abschnitt
+\ref{subsubsection:navigation}), und unten eine Zusammenfassung des aktuellen
+Monats (siehe Abschnitt \ref{subsubsection:aktuelles_monat}) angezeigt.
+Zusätzlich dazu werden nun Konfigurationsmöglichkeiten der
+Übersichtsdarstellung angeboten, mithilfe dessen die Diagramme an
+Benutzerpräferenzen angepasst werden können.
+
+Es können die angezeigten Kategorien gefiltert werden; entweder werden alle
+Kategorien angezeigt, oder man beschränkt sich auf eine bestimmte Kategorie.
+Die Kategorieauswahl kann ebenfalls durch einen Click auf einen Balken
+innerhalb des Diagramms getätigt werden. Die Darstellung der Kategorien kann
+durch Radiobuttons entweder übereinander oder nebeneinander\footnote{Besonders
+nützlich für Vergleiche zwischen Kategorien.} konfiguriert werden.  Wenn eine
+bestimmte Kategorie ausgewählt ist werden die Radiobuttons ausgeblendet.
+
+Es besteht außerdem die Möglichkeit zur Einstellung des angezeigten Zeitraums.
+Durch einen Click auf eine der Zeitauswahlkomboboxen öffnet sich eine
+Kalenderansicht. Der Zeitraum kann ebenfalls durch die Links 'Früher' und
+'Später' im Diagramm geändert werden. Dadurch vergrößert sich der Zeitrahmen um
+3 Monate in die jeweilige Richtung.
+
+Das Diagramm selbst stellt Ausgaben (aggregiert nach Kategorie) pro Monat dar.
+Die Diagrammskala wird jeweils nach dem höchsten Balken skaliert.  Die
+eingestellte Budgetgrenze wird durch eine rote Linie dargestellt (falls sie
+innerhalb das skalierte Diagramm fällt). Kategorien werden durch Farbkodierung
+unterschieden, welche in der Legende aufgeschlüsselt ist. Achsen sind
+selbstverständlich beschriftet; in der Monatsbeschriftung wird das aktuelle
+Monat farblich hervorgehoben\footnote{Nach Applikationskonvention ist das
+aktuelle Element schwarz, und alle anderen dunkelgrau}.
+
 
 \subsection{Mobiles User Interface}
 \subsection{Detailfragen}

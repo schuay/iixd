@@ -32,6 +32,44 @@ Wenn möglich werden diese Kennzahlen sowohl als Absolutbetrag sowie als
 Prozentzahl dargestellt. Negative Abweichungen werden grün dargestellt (= man
 hat im Vergleich dieses Monat gespart), positive mit roter Schriftfarbe.
 
+\subsubsection{Details}
+
+% TODO: Figure
+
+Die Detailansicht enthält eine komplette Auflistung aller eingetragenen Ausgaben, dargestellt
+in einem Tabellenformat. Als Spalten werden angezeigt:
+
+\begin{itemize}
+    \item die Beschreibung des Eintrags,
+    \item die Kategorie,
+    \item das Datum,
+    \item das Erstellungsdatum,
+    \item das Intervall (bei wiederkehrenden Ausgaben),
+    \item und der Betrag.
+\end{itemize}
+
+Per Default ist die Liste nach absteigend nach Datum sortiert. In dieser Sortierung wird nach den
+Einträgen jeden Monats eine Zusammenfassungszeile angezeigt mit relevanten Informationen wie der Summe von Ausgaben dieses Monats u.ä.
+
+Auch bei anderen Sortierungen kann teilweise eine Zusammenfassungszeile angezeigt werden; zum Beispiel ist auch 
+bei Sortierung nach Kategorie die Summe aller Ausgaben von Interesse.
+
+Jeder Eintrag kann auch durch einen Click auf die Buttons am rechten Zeilenende editiert oder gelöscht werden.
+Zum Editieren wird ein inline Editor verwendet damit der Benutzer sich nicht neu orientieren muss.
+
+Wiederkehrende Ausgaben werden ebenfalls in dieser Liste dargestellt. Sobald eine wiederkehrende Ausgabe getätigt wurde
+(also das aktuelle Datum nach dem nächsten Eintreffen dieser Ausgabe ist), wird ein neuer Eintrag \emph{ohne} einem Intervall
+erzeugt. Es besteht also zu jeder wiederkehrenden Ausgabe immer jeweils nur ein 'wiederkehrender' Eintrag, aber beliebig viele 
+nicht-wiederkehrende Einträge.
+
+Neue Einträge werden am oberen Ende der Liste mit einem inline Editor erstellt. Es wird Auto-Complete verwendet um fehlerhafte 
+Eingaben zu reduzieren. Sobald der Focus auf Datumseinträge fällt wird ein Kalenderwidget als Popup angezeigt (ähnlich wie bei der
+OEBB Streckensuche). Ebenfalls können Intervalle durch ein Popup spezifiziert werden. Bei Formatierungsfehlern wird ein 'Fehler' icon mit entsprechendem Mouse-Over Text angezeigt. Durch einen Click
+auf den 'Add' Button auf der rechten Seite der Zeile wird der Eintrag schließlich erstellt.
+
+Auf der linken Seite ist zusätzlich zur Navigation und der Monatszusammenfassung (siehe Abschnitt \ref{subsubsection:navigation} und \ref{subsubsection:aktuelles_monat}) ein Suchfeld. Es gibt einerseits die einfache Suche (eine Textsuche durch Kategorie und Monat), und andererseits nach einem Click auf 
+'Erweitert...' eine erweiterte Suche. Diese bietet eine Bereichssuche für den Betrag (zum Beispiel 'zwischen 300 und 500 Euro') und das Datum. Suchergebnisse werden in dem selben Format wie die Details angezeigt.
+
 \subsubsection{Übersicht}
 
 \begin{figure}[htl]
@@ -76,6 +114,9 @@ selbstverständlich beschriftet; in der Monatsbeschriftung wird das aktuelle
 Monat farblich hervorgehoben\footnote{Nach Applikationskonvention ist das
 aktuelle Element schwarz, und alle anderen dunkelgrau}.
 
+\subsubsection{Einstellungen}
+
+% TODO
 
 \subsection{Mobiles User Interface}
 \subsection{Detailfragen}

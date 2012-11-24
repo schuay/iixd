@@ -3,4 +3,5 @@
 *.out
 *.pdf
 *.swp
+*.synctex.*
 *.toc

@@ -206,6 +206,69 @@ wie m\"oglich werden Fehler in der Bedienung durch eingeschr\"ankte Eingabem\"og
 Kalenderwidget) vermieden.
 
 \subsection{Mobiles User Interface}
+
+Beim Smartphone-GUI geht es vor allem darum, die im Vergleich eher spärlich vorhandene Fläche effizient und intuitiv bedienbar zu gestalten. Da die vollständige Portierung aller Funktionen, die in der Web-Applikation zur Verfügung stehen, zu relativ vielen Einzelnen Screens geführt, und somit die Übersicht stark beeinträchtigt hätte, beschränkt sich die Smartphone-App auf wesentliche Funktionen. Allen voran sind das die Zusammenfassung der wichtigsten Kennzahlen, die gleich nach dem Login auf der Startseite aufscheint und die Eingabe, die für nicht wiederkehrende Ausgaben wohl hauptsächlich am Smartphone durchgeführt wird (Lebensmitteleinkäufe usw.). Weiters gibt es eine Liste mit den kürzlich erfassten Ausgaben, über die man durch Klick auf ein Listenelement dieses nachträglich noch bearbeiten kann. Weiters gibt es eine Ansicht mit einer einfachen Monatsstatistik in Form eines Säulendiagramms,
+Verzichtet wurde hingegen auf eine Möglichkeit der Suche, einer genaueren Auswertung sowie auf die Erstellung wiederkehrender Ausgaben, da sie die Einfachheit („Simplicity“) unnötig beeinträchtigen würden und viel bequemer am Web-Interface bedient werden können. Die Smartphone-App ist also mehr als eine Ergänzung zum bereits sehr mächtigen Web-Interface zu sehen, mit der Horst und Frauke einerseits sehr schnell Vorort über potenzielle Ausgaben entscheiden können („Geht sich das Smartphone für meine Frau diesen Monat noch aus?“), andererseits nach getätigten Einkäufen diese sofort erfassen, und sich somit die Aufbewahrung der Rechnung ersparen können.
+
+\subsubsection{Navigation}
+
+Die Navigation erfolgt, Smartphone-typisch hierarchisch. Ausgehend von dem Startscreen mit der Kennzahlenzusammenfassung gelangt man in die Listenansicht und in die Neuerfassung. Nach erfolgter Neuerfassung gelangt man in die Listenansicht, durch den zur\"uck-Button wieder auf den Startscreen. Von der Listenansicht kommt man durch Klick auf ein Listenelement in dessen Bearbeitungsansicht, durch Klick auf den Statistik-Button in die Statistikansicht. Durch den Zur\"uckbutton jeweils wieder in die n\"achsth\"ohergelegene Ansicht.
+
+\subsubsection{Login}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=\textwidth]{img/LoginScreen}
+\caption{Login Screen}
+\label{fig:login_screen}
+\end{figure}
+
+Ein Login ist erforderlich zur Synchronisierung mit der Web-Applikation, die Authentifizierung erfolgt nat\"urlich per Benutzername-Passwort Kombination, diese kann gespeichert werden, was dazu führt, dass das n\"achste mal der Loginscreen nicht mehr erscheint und direkt die Zusammenfassungsseite ge\"offnet wird.
+
+\subsubsection{Startscreen}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=5cm]{img/TitelScreen}
+\caption{Start Screen}
+\label{fig:start_screen}
+\end{figure}
+
+Wie gut zu erkennen ist, sind am Startscreen die wesentlichen Kennzahlen zusammengefasst, wie schon aus der Webapplikation bekannt. Dies ermöglicht einen sehr schnellen Überblick und erleichtert sehr stark die Entscheidung über einen möglichen Einkauf. Weiters gibt es 2 Navigationsbuttons, über die man in der Navigationshierarchie weiter hinunter navigieren kann.
+
+\subsubsection{Eingabescreen}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=\textwidth]{img/EingabeScreen}
+\caption{Eingabe Screen}
+\label{fig:eingabe_screen}
+\end{figure}
+
+Hier erfolgt die Ausgabenerfassung. Standardm\"aßig ist das aktuelle Datum eingestellt, was wohl in 95\% der Smartphone-Benutzungen so stehen bleibt, da man bereits vergangene oder zukünftige Ausgaben vorgesehenerweise eher über das Web-Interface eingibt. Der Preis, als wichtigstes Informationselement ist hervorgehoben. Kategorie und Beschreibung fragen, wie beim Web-Interface, während der Eingabe vorhandene Datens\"atze ab und erm\"oglichen durch Autovervollständigung eine effiziente Eingabe.
+
+\subsubsection{Listenansicht}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=\textwidth]{img/Liste}
+\caption{Listenansicht}
+\label{fig:listen_ansicht}
+\end{figure}
+
+Hier werden kürzlich getätigte Ausgaben aufgelistet, durch Klick kommt man in den Bearbeitungsmodus. Weiters gibt es 3 Buttons: Neu ermöglicht eine neue Eingabe, Löschen lässt neben allen Listenelementen einen X-Button erscheinen, durch dessen betätigung das jeweilige Element gelöscht wird. Statistik öffnet den Statistik-Screen. Die Smartphone-Liste ist wesentlich einfacher gehalten, als die Web-Liste. Die Schlüsseldaten „Beschreibung“ und „Preis“ reichen gew\"ohnlich in Verbindung mit der rückwärts-chronologischen Sortierung zur schnellen Identifizierung kürzlich getätigter Ausgaben. So bleibt die Liste übersichtlich und smartphonegerecht.
+
+\subsubsection{Statistikansicht}
+
+\begin{figure}[htl]
+\centering
+\includegraphics[width=8cm]{img/Statistik}
+\caption{Statistik Screen}
+\label{fig:statistik_screen}
+\end{figure}
+
+Hier ist ein S\"aulendiagramm zu sehen, das für 3 Monate jeweils eine S\"aule zeigt. Zur Unterscheidung der Kategorien sind diese farblich getrennt. Die zugeh\"orige Legende lässt sich schnell durch einen Button einblenden. Durch die „Swipe“-Geste nach links oder rechts kann der dargestellte Zeitraum navigiert werden.
+
 \subsection{Detailfragen}
 
 \subsubsection{Frage 1}

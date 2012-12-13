@@ -19,25 +19,38 @@
 		<script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
 		<script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
-  <script language="javascript">
+	<script language="javascript">
 		function onClick() {
-				document.getElementById("alert-error-field-empty").style.display = "none";
+        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+				document.getElementById("alert-error-field-is-empty").style.display = "none";
+				document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
 				document.getElementById("alert-success").style.display = "none";
-   	}
+		}
 
-    function onButtonClick() {
-      if(isFieldEmpty()) {
-        document.getElementById("alert-error-field-empty").style.display = "block";
-      } else {
-        document.getElementById("alert-error-field-empty").style.display = "none";
-        document.getElementById("alert-success").style.display = "block";
-      }
-    }
+		function onButtonClick() {
+			if(isFieldEmpty()) {
+        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+				document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+				document.getElementById("alert-error-field-is-empty").style.display = "block";
+			} else if (isNaN(document.getElementById("inputBudgetLimit").value)) {
+        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+        document.getElementById("alert-error-field-is-empty").style.display = "none";
+				document.getElementById("alert-error-field-is-not-a-number").style.display = "block";	
+			} else if(document.getElementById("inputBudgetLimit").value < 0) {
+        document.getElementById("alert-error-field-is-empty").style.display = "none";
+        document.getElementById("alert-error-field-is-not-a-number").style.display = "none"; 
+				document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
+			} else {
+        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+				document.getElementById("alert-error-field-is-empty").style.display = "none";
+        document.getElementById("alert-error-field-is-not-a-number").style.display = "none"; 
+				document.getElementById("alert-success").style.display = "block";
+			}
+		}
 
-
-      function isFieldEmpty() {
-        return (document.getElementById("inputBudgetLimit").value == "");
-      }
+		function isFieldEmpty() {
+			return (document.getElementById("inputBudgetLimit").value == "");
+		}
 
 	
 	</script>	
@@ -81,40 +94,45 @@
 
 		<div class="span9">
 			<div class="well">
-				<form class="form-horizontal">
-					<div class="control-group">
-						<label class="control-label">Select Currency</label>
-						<div class="controls">
-							<select onClick="onClick()" class="span3">
+			<ul class="inline">
+					<li>Currency</li>
+					<li>
+							<select id="currencySelect" onClick="onClick()" class="span3">
 								<option>Euro</option>
 								<option>Dollar</option>
 								<option>Pounds</option>
 							</select>
-						</div>
-					</div>
-					<div class="control-group">
-					<label class="control-label">Budgetlimit</label>
-						<div class="controls">
-							<input id="inputBudgetLimit" type="number" min="0"  placeholder="000.00" onClick="onClick()">
-						</div>
-					</div>
-					<div class="control-group">
-							<button onclick="onButtonClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
-					</div>
-				</form>
-			</div>
-
-			<!-- Conditionally shown -->
-			<div id="alert-success" class="alert alert-success" style="display: none">
-				<strong>Success!</strong>You have successfully changed your settings.
-			</div>
-
-      <!-- Conditionally shown -->
-      <div id="alert-error-field-empty" class="alert alert-error" style="display: none">
-        <strong>Error!</strong> Please make sure all fields are filled in.
+					</li>
+					<li>Budgetlimit</li>
+					<li><input id="inputBudgetLimit" type="text" min="0"	placeholder="000.00" onClick="onClick()"></li>
+			</ul>
+			<button onclick="onButtonClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
       </div>
 
 
+
+
+			<!-- Conditionally shown -->
+			<div id="alert-success" class="alert alert-success" style="display: none">
+				<strong>Success!</strong> You have successfully changed your settings.
+			</div>
+
+			<!-- Conditionally shown -->
+			<div id="alert-error-field-is-empty" class="alert alert-error" style="display: none">
+				<strong>Error!</strong> Please fill in 'Budgetlimit'.
+			</div>
+
+      <!-- Conditionally shown -->
+      <div id="alert-error-field-is-not-a-number" class="alert alert-error" style="display: none">
+        <strong>Error!</strong> Budgetlimit must be a number.
+      </div>
+
+      <!-- Conditionally shown -->
+      <div id="alert-error-field-is-shorter-zero" class="alert alert-error" style="display: none">
+        <strong>Error!</strong> Budgetlimit must be equal or greater 0.
+      </div>
+
+		</div>
 	</div> <!-- /container -->
 	
 	</body>

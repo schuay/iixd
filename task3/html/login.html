@@ -8,6 +8,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <script language="javascript">
+      function onSignInClick() {
+        if (document.getElementById("username").value == "" ||
+            document.getElementById("password").value == "") {
+          document.getElementById("alert-error").style.display = "block";
+        } else {
+          document.getElementById("alert-error").style.display = "none";
+          window.open("main.html", "_self");
+        }
+      }
+    </script>
+
     <!-- Le styles -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -67,12 +79,12 @@
 
       <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input class="input-block-level" placeholder="Username" type="text">
-        <input class="input-block-level" placeholder="Password" type="password">
+        <input id="username" class="input-block-level" placeholder="Username" type="text">
+        <input id="password" class="input-block-level" placeholder="Password" type="password">
         <label class="checkbox">
           <input value="remember-me" type="checkbox"> Remember me
         </label>
-        <button class="btn btn-large btn-block btn-primary" type="submit">Sign in</button>
+        <button onclick="onSignInClick()" class="btn btn-large btn-block btn-primary" type="button">Sign in</button>
       </form>
       <table style="width: 100%">
         <tr>
@@ -86,6 +98,11 @@
           </td>
         </tr>
       </table>
+
+      <!-- Conditionally shown if username or password is empty and button is clicked -->
+      <div id="alert-error" class="alert alert-error" style="display: none">
+        <strong>Error!</strong> Please enter a valid username and password.
+      </div>
 
     </div> <!-- /container -->
 

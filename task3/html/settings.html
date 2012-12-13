@@ -19,11 +19,28 @@
 		<script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
 		<script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
-    <script language="javascript">
-      function onClick() {
-          window.open("main.html", "_self");
-        }
-    </script>
+  <script language="javascript">
+		function onClick() {
+				document.getElementById("alert-error-field-empty").style.display = "none";
+				document.getElementById("alert-success").style.display = "none";
+   	}
+
+    function onButtonClick() {
+      if(isFieldEmpty()) {
+        document.getElementById("alert-error-field-empty").style.display = "block";
+      } else {
+        document.getElementById("alert-error-field-empty").style.display = "none";
+        document.getElementById("alert-success").style.display = "block";
+      }
+    }
+
+
+      function isFieldEmpty() {
+        return (document.getElementById("inputBudgetLimit").value == "");
+      }
+
+	
+	</script>	
 
 	</head>
 
@@ -68,7 +85,7 @@
 					<div class="control-group">
 						<label class="control-label">Select Currency</label>
 						<div class="controls">
-							<select class="span3">
+							<select onClick="onClick()" class="span3">
 								<option>Euro</option>
 								<option>Dollar</option>
 								<option>Pounds</option>
@@ -78,16 +95,28 @@
 					<div class="control-group">
 					<label class="control-label">Budgetlimit</label>
 						<div class="controls">
-							<input type="password" placeholder="000.00">
+							<input id="inputBudgetLimit" type="number" min="0"  placeholder="000.00" onClick="onClick()">
 						</div>
 					</div>
 					<div class="control-group">
-							<button onclick="onClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
+							<button onclick="onButtonClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
 					</div>
 				</form>
 			</div>
-		</div>
 
+			<!-- Conditionally shown -->
+			<div id="alert-success" class="alert alert-success" style="display: none">
+				<strong>Success!</strong>You have successfully changed your settings.
+			</div>
+
+      <!-- Conditionally shown -->
+      <div id="alert-error-field-empty" class="alert alert-error" style="display: none">
+        <strong>Error!</strong> Please make sure all fields are filled in.
+      </div>
+
+
+	</div> <!-- /container -->
+	
 	</body>
 </html>
 

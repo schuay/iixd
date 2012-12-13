@@ -14,6 +14,16 @@
     <!-- Styles -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+
+    <script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
+    <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
+
+    <script language="javascript">
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
+    </script>
 
   </head>
 
@@ -40,7 +50,7 @@
 						<li>
 							<div class="input">
 								<form class="navbar-search">
-        					<input type="text" placeholder="Search"/>
+        					<input id="datepicker" type="text" placeholder="Search"/>
 								</form>
 							</div>
 						</li>
@@ -79,6 +89,7 @@ Donec mollis arcu vitae mauris dictum vehicula. Nulla rutrum congue nisi, vitae 
 Cras varius luctus arcu, eu accumsan nunc molestie et. In eget vestibulum lectus. Nam in dictum justo. Suspendisse sed porta ipsum. Duis commodo arcu nec sapien dignissim sed volutpat nisi consectetur. Nulla scelerisque, nulla ac pellentesque porttitor, enim arcu fringilla justo, ut suscipit eros nisi a nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eu enim nisl, nec aliquam dui. Nam eu blandit mi. Aliquam sed arcu magna. Vestibulum consectetur, arcu quis cursus auctor, nisi leo tristique lorem, non varius lorem est scelerisque augue. Praesent eget eros dolor. Maecenas euismod ullamcorper semper. Integer sit amet libero in elit commodo accumsan nec eu nisl. Curabitur nisl urna, placerat blandit convallis pellentesque, congue et augue.
 				</div>
     </div>
+
 
   </body>
 </html>

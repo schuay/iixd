@@ -20,8 +20,17 @@
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
     <script language="javascript">
+      function onAdvancedSearchClick() {
+        $("#advanced-search-dialog").dialog("open");
+      }
+
       $(function() {
-        $( "#datepicker" ).datepicker();
+        $("#advanced-search-dialog").dialog({
+          autoOpen: false,
+          height: 300,
+          width: 350,
+          position: { my: "left bottom", at: "left top", of: "#advanced-search" },
+          modal: true});
       });
     </script>
 
@@ -50,7 +59,7 @@
 						<li>
 							<div class="input">
 								<form class="navbar-search">
-        					<input id="datepicker" type="text" placeholder="Search"/>
+        					<input type="text" placeholder="Search"/>
 								</form>
 							</div>
 						</li>
@@ -58,7 +67,7 @@
 							<div class="row">
 								<div class="span4">
 									<button class="btn">Search</button>
-									<a href="#" >Advanced...</a>
+									<a id="advanced-search" href="#" onclick="onAdvancedSearchClick()" >Advanced...</a>
 								</div>
 							</div>
 						</li>
@@ -90,6 +99,11 @@ Cras varius luctus arcu, eu accumsan nunc molestie et. In eget vestibulum lectus
 				</div>
     </div>
 
+    <div id="advanced-search-dialog">
+      This dialog is here to display advanced search options.
+      We can put any controls we want into this div.
+      For more information, see http://jqueryui.com/dialog/#modal-form
+    </div>
 
   </body>
 </html>

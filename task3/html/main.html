@@ -12,8 +12,8 @@
     <![endif]-->
 
     <!-- Styles -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet"/>
 
     <script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
@@ -130,6 +130,12 @@
       function isBudgetLimitEmpty() {
         return (document.getElementById("inputBudgetLimit").value == "");
       }
+      
+      <!-- Details page -->
+      
+      $(function() {
+        $("#datefield").datepicker();
+      });
 
     </script>
 
@@ -230,12 +236,71 @@
         <!-- The details main screen. -->
 
         <div id="details-main" class="span9" style="display: block">
-          <div class="well">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum dignissim eleifend. Pellentesque scelerisque elit eu mauris viverra blandit. In sollicitudin ipsum ac purus euismod rhoncus. Mauris sagittis, leo id posuere tincidunt, nunc ante pretium dui, a tristique augue justo vel ligula. Quisque quis est nunc. Maecenas interdum laoreet mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean tempus nulla id leo fringilla nec eleifend nulla luctus. Vestibulum lorem risus, tempus ac rhoncus sed, pulvinar ac erat. Ut lacinia augue nec enim accumsan varius. Fusce dictum ipsum et erat mattis aliquet.
-
-            Donec mollis arcu vitae mauris dictum vehicula. Nulla rutrum congue nisi, vitae pretium risus venenatis sed. Cras tristique, ligula ut venenatis condimentum, lectus sapien dignissim erat, at ullamcorper justo lacus ut urna. Ut non est mauris. In orci nunc, posuere vitae euismod in, cursus in eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu erat sed est feugiat malesuada. Maecenas imperdiet nulla ac nisi lacinia condimentum commodo nec est. Nullam vehicula commodo sapien sit amet mattis. Suspendisse non enim turpis, eu semper erat. Quisque magna dui, iaculis sed tincidunt ac, pulvinar sed ligula. Etiam laoreet nisl sit amet velit porta cursus pretium at dui. Quisque placerat, mauris at egestas ultricies, justo felis pulvinar ipsum, non ornare purus risus at ligula.
-
-            Cras varius luctus arcu, eu accumsan nunc molestie et. In eget vestibulum lectus. Nam in dictum justo. Suspendisse sed porta ipsum. Duis commodo arcu nec sapien dignissim sed volutpat nisi consectetur. Nulla scelerisque, nulla ac pellentesque porttitor, enim arcu fringilla justo, ut suscipit eros nisi a nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eu enim nisl, nec aliquam dui. Nam eu blandit mi. Aliquam sed arcu magna. Vestibulum consectetur, arcu quis cursus auctor, nisi leo tristique lorem, non varius lorem est scelerisque augue. Praesent eget eros dolor. Maecenas euismod ullamcorper semper. Integer sit amet libero in elit commodo accumsan nec eu nisl. Curabitur nisl urna, placerat blandit convallis pellentesque, congue et augue.
+          <div class="">
+              <table class="table table-bordered">
+              <caption>Insert new expense</caption>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder="Description" class="input-block-level"/></td>
+                        <td><input type="text" placeholder="Category" class="input-block-level"/></td>
+                        <td><input type="text" placeholder="Date" class="input-block-level" id="datefield"/></td>
+                        <td><input type="text" placeholder="14.12.2012" class="input-block-level"/></td>
+                        <td><input type="text" placeholder="Interval" class="input-block-level"/></td>
+                        <td><input type="text" placeholder="Amount" class="input-block-level"/></td>
+                    </tr>
+                </tbody>
+                </table>
+                <div class="span2 offset7">
+                    <input type="submit"/>
+                    <div class="row"> </div>
+                </div>
+              <table class="table table-bordered">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Created on</th>
+                        <th>Interval</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="error">
+                        <td>Miete</td>
+                        <td>Miete</td>
+                        <td>10.09.2012</td>
+                        <td>01.06.2012</td>
+                        <td>none</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Gaming-PC</td>
+                        <td>Miscellaneous</td>
+                        <td>08.10.2012</td>
+                        <td>08.10.2012</td>
+                        <td>none</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Strom</td>
+                        <td>Strom</td>
+                        <td>07.09.2012</td>
+                        <td>01.06.2012</td>
+                        <td>none</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Gas</td>
+                        <td>Gas</td>
+                        <td>01.09.2012</td>
+                        <td>01.06.2012</td>
+                        <td>none</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                </tbody>
+              </table>
           </div>
         </div>
 
@@ -253,7 +318,7 @@
               </select>
               </li>
               <li>Budgetlimit</li>
-              <li><input id="inputBudgetLimit" type="text" required placeholder="1500.00" onkeyup="checkBudgetLimitInput()" onclick="checkBudgetLimitInput()" /></li>
+              <li><input id="inputBudgetLimit" type="text" placeholder="1500.00" onkeyup="checkBudgetLimitInput()" onclick="checkBudgetLimitInput()" /></li>
             </ul>
             <button onclick="onSaveSettingsClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
           </div>

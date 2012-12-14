@@ -12,8 +12,8 @@
     <![endif]-->
 
     <!-- Styles -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet"/>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet">
 
     <script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
@@ -47,12 +47,14 @@
         $("#overview-main").get(0).style.display = "block";
         $("#nav-overview").get(0).className = "active";
         $("#navbar-overview-config").get(0).style.display = "block";
+				selectCategory();
       }
 
       function onSettingsClick() {
         resetNav();
         $("#settings-main").get(0).style.display = "block";
         $("#nav-settings").get(0).className = "active";
+				clearAlerts();
       }
 
       <!-- Pops up the advanced search dialog. -->
@@ -91,47 +93,85 @@
 
       function onSaveSettingsClick() {
         if(isBudgetLimitEmpty()) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-empty").style.display = "block";
         } else if (isNaN(document.getElementById("inputBudgetLimit").value)) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
         } else if(document.getElementById("inputBudgetLimit").value < 0) {
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
         } else {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-success").style.display = "block";
         }
       }
 
 			function checkBudgetLimitInput() {
         if(isNaN(document.getElementById("inputBudgetLimit").value)) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
         } else if(document.getElementById("inputBudgetLimit").value < 0) {
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
 				} else {
+					clearAlerts();
+				}
+			}
+	
+			function clearAlertSuccess() {
+          document.getElementById("alert-success").style.display = "none";
+			}
+
+			function clearAlerts() {
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
           document.getElementById("alert-error-field-is-empty").style.display = "none";
           document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
           document.getElementById("alert-success").style.display = "none";
-				}
 			}
 
       function isBudgetLimitEmpty() {
         return (document.getElementById("inputBudgetLimit").value == "");
       }
-      
-      <!-- Details page -->
+	
+			function selectCategory() {
+				var index = document.getElementById("selectedCategory").selectedIndex;
+				
+				if(document.getElementById("selectedCategory").options[index].text == "All") {
+					document.getElementById("radioButtonsDiagrams").style.display = "block";
+				} else {
+          document.getElementById("radioButtonsDiagrams").style.display = "none";
+				}
+			}
+
+      function selectPeriod() {
+        var index = document.getElementById("selectedPeriod").selectedIndex;
+
+        if(document.getElementById("selectedPeriod").options[index].text == "Years") {
+          clearSelectedPeriods();
+          document.getElementById("showPeriodInYears").style.display = "block";
+				} else if(document.getElementById("selectedPeriod").options[index].text == "Months") {
+          clearSelectedPeriods();
+          document.getElementById("showPeriodInMonths").style.display = "block";
+				} else if(document.getElementById("selectedPeriod").options[index].text == "Weeks") {
+          clearSelectedPeriods();
+          document.getElementById("showPeriodInWeeks").style.display = "block";
+				} else if(document.getElementById("selectedPeriod").options[index].text == "Days") {
+          clearSelectedPeriods();
+          document.getElementById("showPeriodInDays").style.display = "block";
+        } else {
+					clearSelectedPeriods();
+        }
+      }
+		
+		function clearSelectedPeriods() {
+          document.getElementById("showPeriodInYears").style.display = "none";
+          document.getElementById("showPeriodInWeeks").style.display = "none";
+          document.getElementById("showPeriodInMonths").style.display = "none";
+          document.getElementById("showPeriodInDays").style.display = "none";
+		}
+
+          <!-- Details page -->
       
       $(function() {
         $("#datefield").datepicker();
@@ -196,23 +236,69 @@
           <div id="navbar-overview-config" class="row" style="display: none">
             <div class="well">
               <ul class="unstyled">
-                <li id="selectedCategory"><strong>Category</strong></li>
+                <li><strong>Category</strong></li>
                 <li>
-                <select id="selectedCategory" class="span2">
+                <select name="selectedCategory" id="selectedCategory" class="span2" onchange="selectCategory()">
                   <option>All</option>
-                  <option>Fixed costs</option>
+									<option>Rent</option>
+                  <option>Power</option>
+									<option>Heating</option>
+									<option>Water</option>
+									<option>Food</option>
+									<option>Misc Stuff</option>
                 </select>
                 </li>
-                <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
-                <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
-
+								<div id="radioButtonsDiagrams" style="display: none">
+	                <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
+  	              <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
+								</div>
               </ul>
               <ul class="unstyled">
-                <li><strong>Period</strong></li>
-                <li>From</li>
-                <li><input type="text" id="datepicker_from" class="span2" /></li>
-                <li>To</li>
-                <li><input type="text" id="datepicker_to" class="span2" /></li>
+								<li><strong>Time Period in</strong></li>
+								<li>
+									<select name="selectedPeriod" id="selectedPeriod" class="span2" onchange="selectPeriod()">
+										<option>Years</option>
+										<option>Months</option>
+										<option>Weeks</option>
+										<option>Days</option>
+									</select>
+								</li>
+
+                <!-- show period in years -->
+                <div id="showPeriodInYears" style="display: block">
+                  <li>From</li>
+                  <li><input type="text" class="span2" /></li>
+                  <li>To</li>
+                  <li><input type="text" class="span2" /></li>
+                </div>
+              
+
+                <!-- show period in months -->
+                <div id="showPeriodInMonths" style="display: none">
+                  <li>From</li>
+                  <li><input type="text" class="span2" /></li>
+                  <li>To</li>
+                  <li><input type="text" class="span2" /></li>
+                </div>
+              
+
+                <!-- show period in weeks -->
+                <div id="showPeriodInWeeks" style="display: none">
+                  <li>From</li>
+                  <li><input type="text" class="span2" /></li>
+                  <li>To</li>
+                  <li><input type="text" class="span2" /></li>
+                </div>
+              
+
+								<!-- show period in days -->
+								<div id="showPeriodInDays" style="display: none">
+    	            <li>From</li>
+	  	            <li><input type="text" class="span2" id="datepicker_from" data-date-viewmode="years"/></li>
+	                <li>To</li>
+                	<li><input type="text" id="datepicker_to" class="span2" /></li>
+								</div>
+
               </ul>
             </div>
           </div>
@@ -235,7 +321,7 @@
 
         <!-- The details main screen. -->
 
-        <div id="details-main" class="span9" style="display: block">
+  <div id="details-main" class="span9" style="display: block">
           <div class="">
               <table class="table table-bordered">
               <caption>Insert new expense</caption>
@@ -311,14 +397,14 @@
             <ul class="inline">
               <li>Currency</li>
               <li>
-              <select id="currencySelect" onclick="onSettingsInputFocused()" class="span3">
+              <select id="currencySelect" class="span3" onfocus="clearAlertSuccess()">
                 <option>Euro</option>
                 <option>Dollar</option>
                 <option>Pound</option>
               </select>
               </li>
               <li>Budgetlimit</li>
-              <li><input id="inputBudgetLimit" type="text" placeholder="1500.00" onkeyup="checkBudgetLimitInput()" onclick="checkBudgetLimitInput()" /></li>
+              <li><input id="inputBudgetLimit" type="text" required placeholder="1500.00" onkeyup="checkBudgetLimitInput()" onclick="checkBudgetLimitInput()" /></li>
             </ul>
             <button onclick="onSaveSettingsClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
           </div>

@@ -47,6 +47,7 @@
         $("#overview-main").get(0).style.display = "block";
         $("#nav-overview").get(0).className = "active";
         $("#navbar-overview-config").get(0).style.display = "block";
+				selectCategory();
       }
 
       function onSettingsClick() {
@@ -132,6 +133,16 @@
       function isBudgetLimitEmpty() {
         return (document.getElementById("inputBudgetLimit").value == "");
       }
+	
+			function selectCategory() {
+				var index = document.getElementById("selectedCategory").selectedIndex;
+				
+				if(document.getElementById("selectedCategory").options[index].text == "All") {
+					document.getElementById("radioButtonsDiagrams").style.display = "block";
+				} else {
+          document.getElementById("radioButtonsDiagrams").style.display = "none";
+				}
+			}
 
     </script>
 
@@ -192,16 +203,20 @@
           <div id="navbar-overview-config" class="row" style="display: none">
             <div class="well">
               <ul class="unstyled">
-                <li id="selectedCategory"><strong>Category</strong></li>
+                <li><strong>Category</strong></li>
                 <li>
-                <select id="selectedCategory" class="span2">
+                <select name="selectedCategory" id="selectedCategory" class="span2" onchange="selectCategory()">
                   <option>All</option>
-                  <option>Fixed costs</option>
+                  <option>Energy</option>
+									<option>Heating</option>
+									<option>Water</option>
+									<option>Food</option>
                 </select>
                 </li>
+								<div id="radioButtonsDiagrams" style="display: none">
                 <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
                 <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
-
+								</div>
               </ul>
               <ul class="unstyled">
                 <li><strong>Period</strong></li>

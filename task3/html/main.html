@@ -89,13 +89,6 @@
 
       <!-- Settings page. -->
 
-      function onSettingsInputFocused() {
-        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-        document.getElementById("alert-error-field-is-empty").style.display = "none";
-        document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
-        document.getElementById("alert-success").style.display = "none";
-      }
-
       function onSaveSettingsClick() {
         if(isBudgetLimitEmpty()) {
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
@@ -116,6 +109,23 @@
           document.getElementById("alert-success").style.display = "block";
         }
       }
+
+			function checkBudgetLimitInput() {
+        if(isNaN(document.getElementById("inputBudgetLimit").value)) {
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
+        } else if(document.getElementById("inputBudgetLimit").value < 0) {
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
+				} else {
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+          document.getElementById("alert-success").style.display = "none";
+				}
+			}
 
       function isBudgetLimitEmpty() {
         return (document.getElementById("inputBudgetLimit").value == "");
@@ -243,7 +253,7 @@
               </select>
               </li>
               <li>Budgetlimit</li>
-              <li><input id="inputBudgetLimit" type="number" required placeholder="1500.00" onclick="onSettingsInputFocused()" /></li>
+              <li><input id="inputBudgetLimit" type="text" required placeholder="1500.00" onkeyup="checkBudgetLimitInput()" onclick="checkBudgetLimitInput()" /></li>
             </ul>
             <button onclick="onSaveSettingsClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
           </div>

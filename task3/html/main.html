@@ -20,6 +20,9 @@
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
     <script language="javascript">
+
+      <!-- Pops up the advanced search dialog. -->
+
       function onAdvancedSearchClick() {
         $("#advanced-search-dialog").dialog("open");
       }
@@ -32,6 +35,41 @@
           position: { my: "left bottom", at: "left top", of: "#advanced-search" },
           modal: true});
       });
+
+      <!-- Settings page. -->
+
+      function onClick() {
+        document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+        document.getElementById("alert-error-field-is-empty").style.display = "none";
+        document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+        document.getElementById("alert-success").style.display = "none";
+      }
+
+      function onButtonClick() {
+        if(isFieldEmpty()) {
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+          document.getElementById("alert-error-field-is-empty").style.display = "block";
+        } else if (isNaN(document.getElementById("inputBudgetLimit").value)) {
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
+        } else if(document.getElementById("inputBudgetLimit").value < 0) {
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
+        } else {
+          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
+          document.getElementById("alert-error-field-is-empty").style.display = "none";
+          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+          document.getElementById("alert-success").style.display = "block";
+        }
+      }
+
+      function isFieldEmpty() {
+        return (document.getElementById("inputBudgetLimit").value == "");
+      }
+
     </script>
 
   </head>
@@ -39,72 +77,118 @@
   <body>
 
     <div class="container">
-    <div class="row">
-    <div class="page-header pagination-centered">
-      <h1>Finance Buddy <small>Personal finance is fun! :)</small></h1>
-    </div>
-    <div class="span3">
       <div class="row">
-        <div class="well">
-          <ul class="nav nav-list">
-            <li class="nav-header">Navigation</li>
-            <li class="active"><a href="#">Details</a></li>
-            <li><a href="overview.html">Overview</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li><a href="login.html">Log Out</a></li>
-          </ul>    
+        <div class="page-header pagination-centered">
+          <h1>Finance Buddy <small>Personal finance is fun! :)</small></h1>
         </div>
-      </div>
-      <div class="row">
-        <div class="well">
-          <ul class="nav nav-list">
-            <li class="nav-header">Search</li>
-            <li>
-            <div class="input-append">
-              <form class="navbar-search">
-                <input class="input-medium" type="text"/>
-                <a class="btn" href="#"><i class="icon-search"></i></a>
-              </form>
+        <div class="span3">
+          <div class="row">
+            <div class="well">
+              <ul class="nav nav-list">
+                <li class="nav-header">Navigation</li>
+                <li class="active"><a href="#">Details</a></li>
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="login.html">Log Out</a></li>
+              </ul>
             </div>
-            </li>
-						<li><a id="advanced-search" href="#" onclick="onAdvancedSearchClick()" >Advanced...</a></li>
-					</ul>
+          </div>
+
+          <!-- The search navbar entry. -->
+
+          <div id="navbar-search" class="row">
+            <div class="well">
+              <ul class="nav nav-list">
+                <li class="nav-header">Search</li>
+                <li>
+                <div class="input-append">
+                  <form class="navbar-search">
+                    <input class="input-medium" type="text"/>
+                    <a class="btn" href="#"><i class="icon-search"></i></a>
+                  </form>
+                </div>
+                </li>
+                <li><a id="advanced-search" href="#" onclick="onAdvancedSearchClick()" >Advanced...</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="well">
+              <ul class="nav nav-list">
+                <li class="nav-header">Current Month</li>
+                <li class="cmonth"><em>Month:</em>
+                <p>October 2012</p></li>
+                <li class="cmonth"><em>Limit:</em>
+                <p>1.500 &euro;</p></li>
+                <li class="cmonth"><em>Expenses:</em>
+                <p>1.455,12 &euro;</p>
+                <p>(97% of Budget)</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- The details main screen. -->
+
+        <div id="details-main" class="span9" style="display: block">
+          <div class="well">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum dignissim eleifend. Pellentesque scelerisque elit eu mauris viverra blandit. In sollicitudin ipsum ac purus euismod rhoncus. Mauris sagittis, leo id posuere tincidunt, nunc ante pretium dui, a tristique augue justo vel ligula. Quisque quis est nunc. Maecenas interdum laoreet mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean tempus nulla id leo fringilla nec eleifend nulla luctus. Vestibulum lorem risus, tempus ac rhoncus sed, pulvinar ac erat. Ut lacinia augue nec enim accumsan varius. Fusce dictum ipsum et erat mattis aliquet.
+
+            Donec mollis arcu vitae mauris dictum vehicula. Nulla rutrum congue nisi, vitae pretium risus venenatis sed. Cras tristique, ligula ut venenatis condimentum, lectus sapien dignissim erat, at ullamcorper justo lacus ut urna. Ut non est mauris. In orci nunc, posuere vitae euismod in, cursus in eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu erat sed est feugiat malesuada. Maecenas imperdiet nulla ac nisi lacinia condimentum commodo nec est. Nullam vehicula commodo sapien sit amet mattis. Suspendisse non enim turpis, eu semper erat. Quisque magna dui, iaculis sed tincidunt ac, pulvinar sed ligula. Etiam laoreet nisl sit amet velit porta cursus pretium at dui. Quisque placerat, mauris at egestas ultricies, justo felis pulvinar ipsum, non ornare purus risus at ligula.
+
+            Cras varius luctus arcu, eu accumsan nunc molestie et. In eget vestibulum lectus. Nam in dictum justo. Suspendisse sed porta ipsum. Duis commodo arcu nec sapien dignissim sed volutpat nisi consectetur. Nulla scelerisque, nulla ac pellentesque porttitor, enim arcu fringilla justo, ut suscipit eros nisi a nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eu enim nisl, nec aliquam dui. Nam eu blandit mi. Aliquam sed arcu magna. Vestibulum consectetur, arcu quis cursus auctor, nisi leo tristique lorem, non varius lorem est scelerisque augue. Praesent eget eros dolor. Maecenas euismod ullamcorper semper. Integer sit amet libero in elit commodo accumsan nec eu nisl. Curabitur nisl urna, placerat blandit convallis pellentesque, congue et augue.
+          </div>
+        </div>
+
+        <!-- The settings main screen. -->
+
+        <div id="settings-main" class="span9" style="display: none">
+          <div class="well">
+            <ul class="inline">
+              <li>Currency</li>
+              <li>
+              <select id="currencySelect" onClick="onClick()" class="span3">
+                <option>Euro</option>
+                <option>Dollar</option>
+                <option>Pound</option>
+              </select>
+              </li>
+              <li>Budgetlimit</li>
+              <li><input id="inputBudgetLimit" type="text" min="0"  placeholder="000.00" onClick="onClick()" /></li>
+            </ul>
+            <button onclick="onButtonClick()" class="btn btn-block btn-primary" type="button">Save Settings</button>
+          </div>
+
+          <!-- Conditionally shown -->
+          <div id="alert-success" class="alert alert-success" style="display: none">
+            <strong>Success!</strong> You have successfully changed your settings.
+          </div>
+
+          <!-- Conditionally shown -->
+          <div id="alert-error-field-is-empty" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Please fill in 'Budgetlimit'.
+          </div>
+
+          <!-- Conditionally shown -->
+          <div id="alert-error-field-is-not-a-number" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Budgetlimit must be a number.
+          </div>
+
+          <!-- Conditionally shown -->
+          <div id="alert-error-field-is-shorter-zero" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Budgetlimit must be equal or greater 0.
+          </div>
+        </div>
+
+        <div id="advanced-search-dialog">
+          This dialog is here to display advanced search options.
+          We can put any controls we want into this div.
+          For more information, see http://jqueryui.com/dialog/#modal-form
         </div>
       </div>
-      <div class="row">
-        <div class="well">
-					<ul class="nav nav-list">
-           	<li class="nav-header">Current Month</li>
-						<li class="cmonth"><em>Month:</em>
-							<p>October 2012</p></li>
-						<li class="cmonth"><em>Limit:</em>
-							<p>1.500 &euro;</p></li>
-						<li class="cmonth"><em>Expenses:</em>
-							<p>1.455,12 &euro;</p>
-							<p>(97% of Budget)</p></li>
-					</ul>
-				</div>
-			</div>
-    </div>
-		<div class="span9">
-        <div class="well">
-					 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum dignissim eleifend. Pellentesque scelerisque elit eu mauris viverra blandit. In sollicitudin ipsum ac purus euismod rhoncus. Mauris sagittis, leo id posuere tincidunt, nunc ante pretium dui, a tristique augue justo vel ligula. Quisque quis est nunc. Maecenas interdum laoreet mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean tempus nulla id leo fringilla nec eleifend nulla luctus. Vestibulum lorem risus, tempus ac rhoncus sed, pulvinar ac erat. Ut lacinia augue nec enim accumsan varius. Fusce dictum ipsum et erat mattis aliquet.
 
-Donec mollis arcu vitae mauris dictum vehicula. Nulla rutrum congue nisi, vitae pretium risus venenatis sed. Cras tristique, ligula ut venenatis condimentum, lectus sapien dignissim erat, at ullamcorper justo lacus ut urna. Ut non est mauris. In orci nunc, posuere vitae euismod in, cursus in eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu erat sed est feugiat malesuada. Maecenas imperdiet nulla ac nisi lacinia condimentum commodo nec est. Nullam vehicula commodo sapien sit amet mattis. Suspendisse non enim turpis, eu semper erat. Quisque magna dui, iaculis sed tincidunt ac, pulvinar sed ligula. Etiam laoreet nisl sit amet velit porta cursus pretium at dui. Quisque placerat, mauris at egestas ultricies, justo felis pulvinar ipsum, non ornare purus risus at ligula.
-
-Cras varius luctus arcu, eu accumsan nunc molestie et. In eget vestibulum lectus. Nam in dictum justo. Suspendisse sed porta ipsum. Duis commodo arcu nec sapien dignissim sed volutpat nisi consectetur. Nulla scelerisque, nulla ac pellentesque porttitor, enim arcu fringilla justo, ut suscipit eros nisi a nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras eu enim nisl, nec aliquam dui. Nam eu blandit mi. Aliquam sed arcu magna. Vestibulum consectetur, arcu quis cursus auctor, nisi leo tristique lorem, non varius lorem est scelerisque augue. Praesent eget eros dolor. Maecenas euismod ullamcorper semper. Integer sit amet libero in elit commodo accumsan nec eu nisl. Curabitur nisl urna, placerat blandit convallis pellentesque, congue et augue.
-				</div>
-    </div>
-
-    <div id="advanced-search-dialog">
-      This dialog is here to display advanced search options.
-      We can put any controls we want into this div.
-      For more information, see http://jqueryui.com/dialog/#modal-form
-    </div>
-  </div>
-  </div>
-
-  </body>
-</html>
+    </body>
+  </html>
 
 <!-- vim: set ts=2 sw=2: --> 

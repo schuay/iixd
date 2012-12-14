@@ -53,6 +53,7 @@
         resetNav();
         $("#settings-main").get(0).style.display = "block";
         $("#nav-settings").get(0).className = "active";
+				clearAlerts();
       }
 
       <!-- Pops up the advanced search dialog. -->
@@ -91,40 +92,41 @@
 
       function onSaveSettingsClick() {
         if(isBudgetLimitEmpty()) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-empty").style.display = "block";
         } else if (isNaN(document.getElementById("inputBudgetLimit").value)) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
         } else if(document.getElementById("inputBudgetLimit").value < 0) {
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
         } else {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-success").style.display = "block";
         }
       }
 
 			function checkBudgetLimitInput() {
         if(isNaN(document.getElementById("inputBudgetLimit").value)) {
-          document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-not-a-number").style.display = "block";
         } else if(document.getElementById("inputBudgetLimit").value < 0) {
-          document.getElementById("alert-error-field-is-empty").style.display = "none";
-          document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
+					clearAlerts();
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "block";
 				} else {
+					clearAlerts();
+				}
+			}
+	
+			function clearAlertSuccess() {
+          document.getElementById("alert-success").style.display = "none";
+			}
+
+			function clearAlerts() {
           document.getElementById("alert-error-field-is-shorter-zero").style.display = "none";
           document.getElementById("alert-error-field-is-empty").style.display = "none";
           document.getElementById("alert-error-field-is-not-a-number").style.display = "none";
           document.getElementById("alert-success").style.display = "none";
-				}
 			}
 
       function isBudgetLimitEmpty() {
@@ -246,7 +248,7 @@
             <ul class="inline">
               <li>Currency</li>
               <li>
-              <select id="currencySelect" onclick="onSettingsInputFocused()" class="span3">
+              <select id="currencySelect" class="span3" onfocus="clearAlertSuccess()">
                 <option>Euro</option>
                 <option>Dollar</option>
                 <option>Pound</option>

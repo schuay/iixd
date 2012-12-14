@@ -25,6 +25,7 @@
 
       function resetNav() {
         $("#details-main").get(0).style.display = "none";
+        $("#overview-main").get(0).style.display = "none";
         $("#settings-main").get(0).style.display = "none";
 
         $("#nav-details").get(0).className = "";
@@ -32,6 +33,7 @@
         $("#nav-settings").get(0).className = "";
 
         $("#navbar-search").get(0).style.display = "none";
+        $("#navbar-overview-config").get(0).style.display = "none";
       }
 
       function onDetailsClick() {
@@ -39,6 +41,13 @@
         $("#details-main").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
+      }
+
+      function onOverviewClick() {
+        resetNav();
+        $("#overview-main").get(0).style.display = "block";
+        $("#nav-overview").get(0).className = "active";
+        $("#navbar-overview-config").get(0).style.display = "block";
       }
 
       function onSettingsClick() {
@@ -60,6 +69,23 @@
           width: 350,
           position: { my: "left bottom", at: "left top", of: "#advanced-search" },
           modal: true});
+      });
+
+      <!-- Overview page. -->
+
+      function onOverviewConfigClick() {
+        if(document.getElementById("optionSideBySide").checked == true) {
+          document.getElementById("picture_1").style.display = "none";
+          document.getElementById("picture_2").style.display = "block";
+          } else {
+          document.getElementById("picture_1").style.display = "block";
+          document.getElementById("picture_2").style.display = "none";
+        }
+      }
+
+      $(function() {
+        $( "#datepicker_from" ).datepicker();
+        $( "#datepicker_to" ).datepicker();
       });
 
       <!-- Settings page. -->
@@ -113,7 +139,7 @@
               <ul class="nav nav-list">
                 <li class="nav-header">Navigation</li>
                 <li id="nav-details" class="active"><a href="#" onclick="onDetailsClick()">Details</a></li>
-                <li id="nav-overview"><a href="overview.html">Overview</a></li>
+                <li id="nav-overview"><a href="#" onclick="onOverviewClick()">Overview</a></li>
                 <li id="nav-settings"><a href="#" onclick="onSettingsClick()">Settings</a></li>
                 <li><a href="login.html">Log Out</a></li>
               </ul>
@@ -135,6 +161,32 @@
                 </div>
                 </li>
                 <li><a id="advanced-search" href="#" onclick="onAdvancedSearchClick()" >Advanced...</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- The overview configuration. -->
+
+          <div id="navbar-overview-config" class="row" style="display: none">
+            <div class="well">
+              <ul class="unstyled">
+                <li id="selectedCategory"><strong>Category</strong></li>
+                <li>
+                <select id="selectedCategory" class="span2">
+                  <option>All</option>
+                  <option>Fixed costs</option>
+                </select>
+                </li>
+                <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
+                <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
+
+              </ul>
+              <ul class="unstyled">
+                <li><strong>Period</strong></li>
+                <li>From</li>
+                <li><input type="text" id="datepicker_from" class="span2" /></li>
+                <li>To</li>
+                <li><input type="text" id="datepicker_to" class="span2" /></li>
               </ul>
             </div>
           </div>
@@ -205,6 +257,26 @@
           <div id="alert-error-field-is-shorter-zero" class="alert alert-error" style="display: none">
             <strong>Error!</strong> Budgetlimit must be equal or greater 0.
           </div>
+        </div>
+
+        <!-- The overview main screen. -->
+
+        <div id="overview-main" class="span9" style="display: none">
+          <div class="well">
+            <form>
+              <div>
+                <img id="picture_1" src="./uebersicht_oneAboveTheOther.gif" class="image-rounded" style="display: none">
+
+                <img id="picture_2" src="./uebersicht_sideBySide.gif" class="image-rounded" style="display: block">
+              </div>
+
+              <div>
+                <button class="btn btn-primary pull-left" href="#"><i class="icon-arrow-left icon-white"></i>Before</a>
+                <button class="btn  btn-primary pull-right" href="#">Next<i class="icon-arrow-right icon-white"></i></a>
+              </div>
+
+            </div>
+          </form>
         </div>
 
         <div id="advanced-search-dialog">

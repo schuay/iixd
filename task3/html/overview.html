@@ -19,6 +19,25 @@
 		<script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
 		<script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
+    <script>
+		
+		function onClick() {
+			if(document.getElementById("optionSideBySide").checked == true) {
+				document.getElementById("picture_1").style.display = "none";
+        document.getElementById("picture_2").style.display = "block";
+			} else {
+        document.getElementById("picture_1").style.display = "block";
+        document.getElementById("picture_2").style.display = "none";
+			}
+		}
+
+    $(function() {
+			$( "#datepicker_from" ).datepicker();
+			$( "#datepicker_to" ).datepicker();
+    });
+    </script>
+
+
 	</head>
 
 	<body>
@@ -42,6 +61,30 @@
 			</div>
 			<div class="row">
 				<div class="well">
+				<ul class="unstyled">
+					<li><h1><small>Darstellung</small></h1></li>
+					<li id="selectedCategory"><strong>Category</strong></li>
+					<li>
+						<select id="selectedCategory" class="span2">
+							<option>All</option>
+							<option>Fixed costs</option>
+						</select>
+					</li>
+					<li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onClick="onClick()" /> Side by side</li>
+					<li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onClick="onClick()" /> One above the other</li>
+
+				</ul>
+				<ul class="unstyled">
+					<li><strong>Period</strong></li>
+					<li>From</li>
+					<li><input type="text" id="datepicker_from" class="span2" /></li>
+					<li>To</li>
+          <li><input type="text" id="datepicker_to" class="span2" /></li>
+				</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="well">
 					<ul class="nav nav-list">
 						<li class="nav-header">Current Month</li>
 						<li class="cmonth"><em>Month:</em>
@@ -58,9 +101,22 @@
 
 		<div class="span9">
 			<div class="well">
-				Overview ...
-			</div>
+				<form>
+					<div>
+						<img id="picture_1" src="./uebersicht_oneAboveTheOther.gif" class="image-rounded" style="display: none">
+
+       			<img id="picture_2" src="./uebersicht_sideBySide.gif" class="image-rounded" style="display: block">
+					</div>
+
+      		<div>
+         		<button class="btn btn-primary pull-left" href="#"><i class="icon-arrow-left icon-white"></i>Before</a>
+          	<button class="btn  btn-primary pull-right" href="#">Next<i class="icon-arrow-right icon-white"></i></a>
+      		</div>
+
+    		</div>
+			</form>
 		</div>
+	</div>
 
 	</body>
 </html>

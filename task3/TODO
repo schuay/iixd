@@ -1,0 +1,12 @@
+* write protocol
+* redesign concept to address criticism
+
+* autocompletion in navbar search
+* advanced search
+* search results page
+* entire details page
+* improve current month navbar section
+* improve overview config navbar section
+* add daterange picker to overview config navbar section (included in bootstrap jquery-ui)
+* make better-looking diagrams
+* if possible allow only numbers in settings entry

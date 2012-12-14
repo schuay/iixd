@@ -21,6 +21,32 @@
 
     <script language="javascript">
 
+      <!-- Navigation; switching between main views. -->
+
+      function resetNav() {
+        $("#details-main").get(0).style.display = "none";
+        $("#settings-main").get(0).style.display = "none";
+
+        $("#nav-details").get(0).className = "";
+        $("#nav-overview").get(0).className = "";
+        $("#nav-settings").get(0).className = "";
+
+        $("#navbar-search").get(0).style.display = "none";
+      }
+
+      function onDetailsClick() {
+        resetNav();
+        $("#details-main").get(0).style.display = "block";
+        $("#nav-details").get(0).className = "active";
+        $("#navbar-search").get(0).style.display = "block";
+      }
+
+      function onSettingsClick() {
+        resetNav();
+        $("#settings-main").get(0).style.display = "block";
+        $("#nav-settings").get(0).className = "active";
+      }
+
       <!-- Pops up the advanced search dialog. -->
 
       function onAdvancedSearchClick() {
@@ -86,9 +112,9 @@
             <div class="well">
               <ul class="nav nav-list">
                 <li class="nav-header">Navigation</li>
-                <li class="active"><a href="#">Details</a></li>
-                <li><a href="overview.html">Overview</a></li>
-                <li><a href="settings.html">Settings</a></li>
+                <li id="nav-details" class="active"><a href="#" onclick="onDetailsClick()">Details</a></li>
+                <li id="nav-overview"><a href="overview.html">Overview</a></li>
+                <li id="nav-settings"><a href="#" onclick="onSettingsClick()">Settings</a></li>
                 <li><a href="login.html">Log Out</a></li>
               </ul>
             </div>

@@ -91,7 +91,7 @@
         if(document.getElementById("optionSideBySide").checked == true) {
           document.getElementById("picture_1").style.display = "none";
           document.getElementById("picture_2").style.display = "block";
-          } else {
+        } else {
           document.getElementById("picture_1").style.display = "block";
           document.getElementById("picture_2").style.display = "none";
         }
@@ -146,15 +146,17 @@
         return (document.getElementById("inputBudgetLimit").value == "");
       }
 	
-			function selectCategory() {
-				var index = document.getElementById("selectedCategory").selectedIndex;
+      function selectCategory() {
+        var index = document.getElementById("selectedCategory").selectedIndex;
 				
-				if(document.getElementById("selectedCategory").options[index].text == "All") {
-					document.getElementById("radioButtonsDiagrams").style.display = "block";
-				} else {
-          document.getElementById("radioButtonsDiagrams").style.display = "none";
-				}
-			}
+        if (document.getElementById("selectedCategory").options[index].text == "All") {
+          document.getElementById('optionSideBySide').disabled = false;
+          document.getElementById('optionOneAboveTheOther').disabled = false;
+        } else {
+          document.getElementById("optionSideBySide").disabled = true;
+          document.getElementById("optionOneAboveTheOther").disabled = true;
+        }
+      }
 
       /* Details page */
 
@@ -279,10 +281,10 @@
                   <option>Misc Stuff</option>
                 </select>
                 </li>
-                <div id="radioButtonsDiagrams" style="display: none">
+                <form>
                   <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
                   <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
-                </div>
+                </form>
                 <table>
                   <tr>
                     <td><li class="nav-header">From</li></td>

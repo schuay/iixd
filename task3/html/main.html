@@ -36,8 +36,6 @@
 
         $("#navbar-search").get(0).style.display = "none";
         $("#navbar-overview-config").get(0).style.display = "none";
-
-      	$("#newExpenseAlertError").get(0).style.display = "none";
       }
 
       function onDetailsClick() {
@@ -200,9 +198,9 @@
           document.getElementById("newExpenseCategory").value == "" ||
           document.getElementById("newExpenseDate").value == "" ||
           ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
-          document.getElementById("newExpenseAlertError").style.display = "block";
+          document.getElementById("alert-error-new-expense").style.display = "block";
         } else {
-          document.getElementById("newExpenseAlertError").style.display = "none";
+          document.getElementById("alert-error-new-expense").style.display = "none";
           document.forms['newExpense'].submit();
         }
       }
@@ -396,8 +394,9 @@
               </tr>
             </table>
 
-            <!-- Conditionally shown if username or password is empty and button is clicked -->
-            <div id="newExpenseAlertError" class="alert alert-error" style="display: none">
+            <!-- Conditionally shown. -->
+
+            <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
               <strong>Error!</strong> Please enter a description, category, date, interval and amount.
             </div>
             <div class="offset7">

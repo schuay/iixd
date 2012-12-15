@@ -216,6 +216,14 @@
         line-height: 0.5;
         text-indent:1em;
       }
+
+			.col-red {
+				color:#FF0000;
+			}
+
+			.col-green {
+				color:#00FF00;
+			}
     </style>
 
   </head>
@@ -335,14 +343,19 @@
           <div class="row">
             <div class="well">
               <ul class="nav nav-list">
-                <li class="nav-header">Current Month</li>
-                <li class="cmonth"><em>Month:</em>
-                <p>October 2012</p></li>
+                <li class="nav-header">October 2012</li>
+                <li class="cmonth"><em>Money left:</em>
+								<p>44.88 &euro;</p>
+                <p>(3% of Budget)</p></li>
+                <li class="cmonth"><em>Expenses:</em>
+								<p>1.455,12 &euro;</p>
+                <p>(97% of Budget)</p></li>
                 <li class="cmonth"><em>Limit:</em>
                 <p>1.500 &euro;</p></li>
-                <li class="cmonth"><em>Expenses:</em>
-                <p>1.455,12 &euro;</p>
-                <p>(97% of Budget)</p></li>
+                <li class="cmonth"><em>Deviation (previous):</em>
+                <p class="col-red">-222.88 &euro; (-13%)</p></li>
+                <li class="cmonth"><em>Deviation (average):</em>
+                <p class="col-green">+128.42 &euro; (+2%)</p></li>
               </ul>
             </div>
           </div>

@@ -26,10 +26,12 @@
       function resetNav() {
         $("#details-main").get(0).style.display = "none";
         $("#overview-main").get(0).style.display = "none";
+        $("#schedule-main").get(0).style.display = "none";
         $("#settings-main").get(0).style.display = "none";
 
         $("#nav-details").get(0).className = "";
         $("#nav-overview").get(0).className = "";
+        $("#nav-schedule").get(0).className = "";
         $("#nav-settings").get(0).className = "";
 
         $("#navbar-search").get(0).style.display = "none";
@@ -50,6 +52,14 @@
         $("#overview-main").get(0).style.display = "block";
         $("#nav-overview").get(0).className = "active";
         $("#navbar-overview-config").get(0).style.display = "block";
+				selectCategory();
+      }
+
+      function onScheduleClick() {
+        resetNav();
+        $("#schedule-main").get(0).style.display = "block";
+        $("#nav-schedule").get(0).className = "active";
+        $("#navbar-search").get(0).style.display = "block";
 				selectCategory();
       }
 
@@ -224,6 +234,7 @@
                 <li class="nav-header">Navigation</li>
                 <li id="nav-details" class="active"><a href="#" onclick="onDetailsClick()">Details</a></li>
                 <li id="nav-overview"><a href="#" onclick="onOverviewClick()">Overview</a></li>
+                <li id="nav-schedule"><a href="#" onclick="onScheduleClick()">Schedule</a></li>
                 <li id="nav-settings"><a href="#" onclick="onSettingsClick()">Settings</a></li>
                 <li><a href="login.html">Log Out</a></li>
               </ul>
@@ -479,6 +490,54 @@
           <div id="alert-error-field-is-shorter-zero" class="alert alert-error" style="display: none">
             <strong>Error!</strong> Budgetlimit must be equal or greater 0.
           </div>
+        </div>
+
+        <!-- The details main screen. -->
+
+  <div id="schedule-main" class="span9" style="display: none">
+		<h4>Scheduled expenses</h4>
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Start Date</th>
+                        <th>Next Date</th>
+                        <th>Created on</th>
+                        <th>Interval</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Miete</td>
+                        <td>Miete</td>
+                        <td>10.11.2012</td>
+                        <td>10.06.2012</td>
+                        <td>01.06.2012</td>
+                        <td>monthly</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Strom</td>
+                        <td>Strom</td>
+                        <td>07.11.2012</td>
+                        <td>07.06.2012</td>
+                        <td>01.06.2012</td>
+                        <td>monthly</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Gas</td>
+                        <td>Gas</td>
+                        <td>01.11.2012</td>
+                        <td>01.06.2012</td>
+                        <td>01.06.2012</td>
+                        <td>monthly</td>
+                        <td>200 &euro;</td>
+                    </tr>
+                </tbody>
+              </table>
         </div>
 
         <!-- The overview main screen. -->

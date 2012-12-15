@@ -364,8 +364,9 @@
         <!-- The details main screen. -->
 
         <div id="details-main" class="span9" style="display: block">
+
           <form id="newExpense" action="main.html" method="get">
-            <h4>New expense</h4>
+            <h4>New Expense</h4>
             <table class="table table-bordered">
               <tr>
                 <th>Description</th>
@@ -381,7 +382,7 @@
                 <td>
                   <select class="span2" name="newExpenseInterval">
                     <option>none</option>
-                    <option>anually</option>
+                    <option>yearly</option>
                     <option>monthly</option>
                     <option>weekly</option>
                     <option>daily</option>
@@ -390,6 +391,7 @@
                 <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
               </tr>
             </table>
+
             <!-- Conditionally shown if username or password is empty and button is clicked -->
             <div id="newExpenseAlertError" class="alert alert-error" style="display: none">
               <strong>Error!</strong> Please enter a description, category, date, interval and amount.

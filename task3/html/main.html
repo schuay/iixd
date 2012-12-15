@@ -518,6 +518,24 @@
               </tr>
             </thead>
             <tbody>
+              <script language="javascript">
+                if (typeof $_GET['newExpenseInterval'] != 'undefined' &&
+                    $_GET['newExpenseInterval'] != 'none') {
+                  document.write("<tr id=\"example-schedule\"><td>"+$_GET['newExpenseDesc']+
+                      "</td><td>"+$_GET['newExpenseCategory']+
+                      "</td><td>"+$_GET['newExpenseDate']+
+                      "</td><td>"+$_GET['newExpenseDate']+
+                      "</td><td>"+$_GET['newExpenseCreatDate']+
+                      "</td><td>"+$_GET['newExpenseInterval']+
+                      "</td><td>"+$_GET['newExpenseAmount']+" &euro;"+
+                      "</td><td>"+
+                      "<a class=\"btn\" href=\"#\" onClick=\"onEditSchedClick()\">"+
+                        "<i class=\"icon-edit\"></i>"+
+                      "</a>\n<a class=\"btn\" href=\"#\" onClick=\"onRemoveEntryClick()\">"+
+                        "<i class=\"icon-remove\"></i>"+
+                      "</a></td></tr>");
+                }
+              </script>
               <tr>
                 <td>Miete</td>
                 <td>Miete</td>

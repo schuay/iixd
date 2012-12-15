@@ -41,6 +41,7 @@
         $("#navbar-overview-config").get(0).style.display = "none";
 
         $("#new-expense-dialog").dialog("close");
+        $("#edit-example-expense-dialog").dialog("close");
       }
 
       function onDetailsClick() {
@@ -167,6 +168,7 @@
 
       $(function() {
         $("#newExpenseDate").datepicker();
+        $("#editExpenseDate").datepicker();
         $("#newExpenseCategory").typeahead({
           source: categories,
         });
@@ -184,6 +186,31 @@
         }
       }
 
+      function onEditEntry() {
+        if (document.getElementById("editExpenseDesc").value == "" ||
+          document.getElementById("editExpenseCategory").value == "" ||
+          document.getElementById("editExpenseDate").value == "" ||
+          ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("editExpenseAmount").value)) {
+          document.getElementById("alert-error-edit-expense").style.display = "block";
+        } else {
+          document.getElementById("alert-error-edit-expense").style.display = "none";
+          document.forms['editExpense'].submit();
+        }
+      }
+
+      function onEditEntryClick() {
+        document.getElementById("editExpenseDesc").value = $_GET['newExpenseDesc'] || "";
+        document.getElementById("editExpenseCategory").value = $_GET['newExpenseCategory'] || "";
+        document.getElementById("editExpenseDate").value = $_GET['newExpenseDate'] || "";
+        document.getElementById("editExpenseAmount").value = $_GET['newExpenseAmount'] || "";
+        $("#edit-example-expense-dialog").dialog("open");
+      }
+
+      function onRemoveEntryClick() {
+        window.location.search = "";
+      }
+
+
       function onNewExpenseClick() {
         $("#new-expense-dialog").dialog("open");
       }
@@ -195,7 +222,23 @@
           draggable: false,
           width: 693,
           position: { my: "left top", at: "left bottom", of: "#new-expense" }});
+        $("#edit-example-expense-dialog").dialog({
+          autoOpen: false,
+          resizable: false,
+          draggable: false,
+          width: 693,
+          position: { my: "left top", at: "left bottom", of: "#example-expense" }});
       });
+
+      /* Parse the GET-parameters for the example-entry */
+
+      var $_GET = {};
+      var parts = window.location.search.substr(1).split("&");
+
+      for (var i = 0; i < parts.length; i++) {
+        var temp = parts[i].split("=");
+        $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+      }
 
     </script>
 
@@ -340,25 +383,26 @@
                 <th>Created on</th>
                 <th>Interval</th>
                 <th>Amount</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <script language="javascript">
-                var parts = window.location.search.substr(1).split("&");
-                var $_GET = {};
-                for (var i = 0; i < parts.length; i++) {
-                  var temp = parts[i].split("=");
-                  $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
-                }
-
-                var curDate = new Date();
                 if (typeof $_GET['newExpenseAmount'] != 'undefined') {
-                  document.write("<tr class=\"error\"><td>"+$_GET['newExpenseDesc']+
+                  var curDate = new Date();
+
+                  document.write("<tr id=\"example-expense\" class=\"error\"><td>"+$_GET['newExpenseDesc']+
                       "</td><td>"+$_GET['newExpenseCategory']+
                       "</td><td>"+$_GET['newExpenseDate']+
                       "</td><td>"+(curDate.getMonth()+1)+"/"+curDate.getDate()+"/"+curDate.getFullYear()+
                       "</td><td>"+$_GET['newExpenseInterval']+
-                      "</td><td>"+$_GET['newExpenseAmount']+" &euro;</td></tr>");
+                      "</td><td>"+$_GET['newExpenseAmount']+" &euro;"+
+                      "</td><td>"+
+                      "<a class=\"btn\" href=\"#\" onClick=\"onEditEntryClick()\">"+
+                        "<i class=\"icon-edit\"></i>"+
+                      "</a>\n<a class=\"btn\" href=\"#\" onClick=\"onRemoveEntryClick()\">"+
+                        "<i class=\"icon-remove\"></i>"+
+                      "</a></td></tr>");
                 }
               </script>
               <tr class="error">
@@ -368,6 +412,10 @@
                 <td>01.06.2012</td>
                 <td>none</td>
                 <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
               </tr>
               <tr>
                 <td>Gaming-PC</td>
@@ -376,6 +424,10 @@
                 <td>08.10.2012</td>
                 <td>none</td>
                 <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
               </tr>
               <tr>
                 <td>Strom</td>
@@ -384,6 +436,10 @@
                 <td>01.06.2012</td>
                 <td>none</td>
                 <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
               </tr>
               <tr>
                 <td>Gas</td>
@@ -392,6 +448,10 @@
                 <td>01.06.2012</td>
                 <td>none</td>
                 <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -532,6 +592,35 @@
           </div>
 
           <input type="button" onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+
+        </form>
+
+        <!-- The edit dialog for our example expense. -->
+
+        <form id="edit-example-expense-dialog" name="editExpense" action="main.html" method="get">
+          <h4>Edit Expense</h4>
+          <table class="table table-bordered">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Description" class="input-block-level" id="editExpenseDesc" name="newExpenseDesc"/></td>
+              <td><input type="text" placeholder="Category" class="input-block-level" id="editExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
+              <td><input type="text" placeholder="Date" class="input-block-level" id="editExpenseDate" name="newExpenseDate"/></td>
+              <td><input type="text" placeholder="Amount" class="input-block-level"id="editExpenseAmount" name="newExpenseAmount"/></td>
+            </tr>
+          </table>
+
+          <!-- Conditionally shown. -->
+
+          <div id="alert-error-edit-expense" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Please enter a description, category, date and amount.
+          </div>
+
+          <input type="button" onclick="onEditEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
 
         </form>
 

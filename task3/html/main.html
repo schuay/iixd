@@ -279,29 +279,29 @@
                 <li>
                 <select name="selectedCategory" id="selectedCategory" class="span2" onchange="selectCategory()">
                   <option>All</option>
-									<option>Rent</option>
+                  <option>Rent</option>
                   <option>Power</option>
-									<option>Heating</option>
-									<option>Water</option>
-									<option>Food</option>
-									<option>Misc Stuff</option>
+                  <option>Heating</option>
+                  <option>Water</option>
+                  <option>Food</option>
+                  <option>Misc Stuff</option>
                 </select>
                 </li>
-								<div id="radioButtonsDiagrams" style="display: none">
-	                <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
-  	              <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
-								</div>
+                <div id="radioButtonsDiagrams" style="display: none">
+                  <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
+                  <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
+                </div>
               </ul>
               <ul class="unstyled">
-								<li><strong>Time Period in</strong></li>
-								<li>
-									<select name="selectedPeriod" id="selectedPeriod" class="span2" onchange="selectPeriod()">
-										<option>Years</option>
-										<option>Months</option>
-										<option>Weeks</option>
-										<option>Days</option>
-									</select>
-								</li>
+                <li><strong>Time Period in</strong></li>
+                <li>
+                <select name="selectedPeriod" id="selectedPeriod" class="span2" onchange="selectPeriod()">
+                  <option>Years</option>
+                  <option>Months</option>
+                  <option>Weeks</option>
+                  <option>Days</option>
+                </select>
+                </li>
 
                 <!-- show period in years -->
                 <div id="showPeriodInYears" style="display: block">
@@ -310,7 +310,7 @@
                   <li>To</li>
                   <li><input type="text" class="span2" /></li>
                 </div>
-              
+
 
                 <!-- show period in months -->
                 <div id="showPeriodInMonths" style="display: none">
@@ -319,7 +319,7 @@
                   <li>To</li>
                   <li><input type="text" class="span2" /></li>
                 </div>
-              
+
 
                 <!-- show period in weeks -->
                 <div id="showPeriodInWeeks" style="display: none">
@@ -328,15 +328,15 @@
                   <li>To</li>
                   <li><input type="text" class="span2" /></li>
                 </div>
-              
 
-								<!-- show period in days -->
-								<div id="showPeriodInDays" style="display: none">
-    	            <li>From</li>
-	  	            <li><input type="text" class="span2" id="datepicker_from" data-date-viewmode="years"/></li>
-	                <li>To</li>
-                	<li><input type="text" id="datepicker_to" class="span2" /></li>
-								</div>
+
+                <!-- show period in days -->
+                <div id="showPeriodInDays" style="display: none">
+                  <li>From</li>
+                  <li><input type="text" class="span2" id="datepicker_from" data-date-viewmode="years"/></li>
+                  <li>To</li>
+                  <li><input type="text" id="datepicker_to" class="span2" /></li>
+                </div>
 
               </ul>
             </div>
@@ -347,10 +347,10 @@
               <ul class="nav nav-list">
                 <li class="nav-header">October 2012</li>
                 <li class="cmonth"><em>Money left:</em>
-								<p>44.88 &euro;</p>
+                <p>44.88 &euro;</p>
                 <p>(3% of Budget)</p></li>
                 <li class="cmonth"><em>Expenses:</em>
-								<p>1.455,12 &euro;</p>
+                <p>1.455,12 &euro;</p>
                 <p>(97% of Budget)</p></li>
                 <li class="cmonth"><em>Limit:</em>
                 <p>1.500 &euro;</p></li>
@@ -365,106 +365,106 @@
 
         <!-- The details main screen. -->
 
-  <div id="details-main" class="span9" style="display: block">
-						  <form id="newExpense" action="main.html" method="get">
-						  <h4>New expense</h4>
-              <table class="table table-bordered">
-                    <tr>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Interval</th>
-                        <th>Amount</th>
-									  </tr>
-                    <tr>
-                        <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
-                        <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
-                        <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
-                        <td>
-													<select class="span2" name="newExpenseInterval">
-														<option>none</option>
-														<option>anually</option>
-														<option>monthly</option>
-														<option>weekly</option>
-														<option>daily</option>
-													</select>
-												</td>
-                        <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
-                    </tr>
-                </table>
-      					<!-- Conditionally shown if username or password is empty and button is clicked -->
-     						<div id="newExpenseAlertError" class="alert alert-error" style="display: none">
-        					<strong>Error!</strong> Please enter a description, category, date, interval and amount.
-								</div>
-								<div class="offset7">
-									<input type="button" onclick="onNewEntry()" class="btn" value="Submit"/>
-							  </div>
-							</form>
-              <table class="table table-bordered">
-                <caption></caption>
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Created on</th>
-                        <th>Interval</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <script language="javascript">
-											var parts = window.location.search.substr(1).split("&");
-											var $_GET = {};
-											for (var i = 0; i < parts.length; i++) {
-												var temp = parts[i].split("=");
-												$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
-											}
+        <div id="details-main" class="span9" style="display: block">
+          <form id="newExpense" action="main.html" method="get">
+            <h4>New expense</h4>
+            <table class="table table-bordered">
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Interval</th>
+                <th>Amount</th>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
+                <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
+                <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
+                <td>
+                  <select class="span2" name="newExpenseInterval">
+                    <option>none</option>
+                    <option>anually</option>
+                    <option>monthly</option>
+                    <option>weekly</option>
+                    <option>daily</option>
+                  </select>
+                </td>
+                <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
+              </tr>
+            </table>
+            <!-- Conditionally shown if username or password is empty and button is clicked -->
+            <div id="newExpenseAlertError" class="alert alert-error" style="display: none">
+              <strong>Error!</strong> Please enter a description, category, date, interval and amount.
+            </div>
+            <div class="offset7">
+              <input type="button" onclick="onNewEntry()" class="btn" value="Submit"/>
+            </div>
+          </form>
+          <table class="table table-bordered">
+            <caption></caption>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Created on</th>
+                <th>Interval</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <script language="javascript">
+                var parts = window.location.search.substr(1).split("&");
+                var $_GET = {};
+                for (var i = 0; i < parts.length; i++) {
+                  var temp = parts[i].split("=");
+                  $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+                }
 
-											var curDate = new Date();
-											if (typeof $_GET['newExpenseAmount'] != 'undefined') {
-												document.write("<tr class=\"error\"><td>"+$_GET['newExpenseDesc']+
-														"</td><td>"+$_GET['newExpenseCategory']+
-														"</td><td>"+$_GET['newExpenseDate']+
-														"</td><td>"+(curDate.getMonth()+1)+"/"+curDate.getDate()+"/"+curDate.getFullYear()+
-														"</td><td>"+$_GET['newExpenseInterval']+
-														"</td><td>"+$_GET['newExpenseAmount']+" &euro;</td></tr>");
-											}
-                    </script>
-                    <tr class="error">
-                        <td>Miete</td>
-                        <td>Miete</td>
-                        <td>10.09.2012</td>
-                        <td>01.06.2012</td>
-                        <td>none</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                    <tr>
-                        <td>Gaming-PC</td>
-                        <td>Miscellaneous</td>
-                        <td>08.10.2012</td>
-                        <td>08.10.2012</td>
-                        <td>none</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                    <tr>
-                        <td>Strom</td>
-                        <td>Strom</td>
-                        <td>07.09.2012</td>
-                        <td>01.06.2012</td>
-                        <td>none</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                    <tr>
-                        <td>Gas</td>
-                        <td>Gas</td>
-                        <td>01.09.2012</td>
-                        <td>01.06.2012</td>
-                        <td>none</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                </tbody>
-              </table>
+                var curDate = new Date();
+                if (typeof $_GET['newExpenseAmount'] != 'undefined') {
+                  document.write("<tr class=\"error\"><td>"+$_GET['newExpenseDesc']+
+                      "</td><td>"+$_GET['newExpenseCategory']+
+                      "</td><td>"+$_GET['newExpenseDate']+
+                      "</td><td>"+(curDate.getMonth()+1)+"/"+curDate.getDate()+"/"+curDate.getFullYear()+
+                      "</td><td>"+$_GET['newExpenseInterval']+
+                      "</td><td>"+$_GET['newExpenseAmount']+" &euro;</td></tr>");
+                }
+              </script>
+              <tr class="error">
+                <td>Miete</td>
+                <td>Miete</td>
+                <td>10.09.2012</td>
+                <td>01.06.2012</td>
+                <td>none</td>
+                <td>200 &euro;</td>
+              </tr>
+              <tr>
+                <td>Gaming-PC</td>
+                <td>Miscellaneous</td>
+                <td>08.10.2012</td>
+                <td>08.10.2012</td>
+                <td>none</td>
+                <td>200 &euro;</td>
+              </tr>
+              <tr>
+                <td>Strom</td>
+                <td>Strom</td>
+                <td>07.09.2012</td>
+                <td>01.06.2012</td>
+                <td>none</td>
+                <td>200 &euro;</td>
+              </tr>
+              <tr>
+                <td>Gas</td>
+                <td>Gas</td>
+                <td>01.09.2012</td>
+                <td>01.06.2012</td>
+                <td>none</td>
+                <td>200 &euro;</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <!-- The settings main screen. -->
@@ -509,50 +509,50 @@
 
         <!-- The details main screen. -->
 
-  <div id="schedule-main" class="span9" style="display: none">
-		<h4>Scheduled expenses</h4>
-              <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Start Date</th>
-                        <th>Next Date</th>
-                        <th>Created on</th>
-                        <th>Interval</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Miete</td>
-                        <td>Miete</td>
-                        <td>10.11.2012</td>
-                        <td>10.06.2012</td>
-                        <td>01.06.2012</td>
-                        <td>monthly</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                    <tr>
-                        <td>Strom</td>
-                        <td>Strom</td>
-                        <td>07.11.2012</td>
-                        <td>07.06.2012</td>
-                        <td>01.06.2012</td>
-                        <td>monthly</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                    <tr>
-                        <td>Gas</td>
-                        <td>Gas</td>
-                        <td>01.11.2012</td>
-                        <td>01.06.2012</td>
-                        <td>01.06.2012</td>
-                        <td>monthly</td>
-                        <td>200 &euro;</td>
-                    </tr>
-                </tbody>
-              </table>
+        <div id="schedule-main" class="span9" style="display: none">
+          <h4>Scheduled expenses</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Start Date</th>
+                <th>Next Date</th>
+                <th>Created on</th>
+                <th>Interval</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Miete</td>
+                <td>Miete</td>
+                <td>10.11.2012</td>
+                <td>10.06.2012</td>
+                <td>01.06.2012</td>
+                <td>monthly</td>
+                <td>200 &euro;</td>
+              </tr>
+              <tr>
+                <td>Strom</td>
+                <td>Strom</td>
+                <td>07.11.2012</td>
+                <td>07.06.2012</td>
+                <td>01.06.2012</td>
+                <td>monthly</td>
+                <td>200 &euro;</td>
+              </tr>
+              <tr>
+                <td>Gas</td>
+                <td>Gas</td>
+                <td>01.11.2012</td>
+                <td>01.06.2012</td>
+                <td>01.06.2012</td>
+                <td>monthly</td>
+                <td>200 &euro;</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <!-- The overview main screen. -->
@@ -570,8 +570,8 @@
                 <li class="next"><a href="#">Newer &rarr;</a></li>
               </ul>
 
-          </form>
-            </div>
+            </form>
+          </div>
         </div>
 
         <div id="advanced-search-dialog">
@@ -580,9 +580,9 @@
           For more information, see http://jqueryui.com/dialog/#modal-form
         </div>
       </div>
-		</div>
+    </div>
 
-    </body>
-  </html>
+  </body>
+</html>
 
 <!-- vim: set ts=2 sw=2: --> 

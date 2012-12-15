@@ -274,8 +274,8 @@
 
           <div id="navbar-overview-config" class="row" style="display: none">
             <div class="well">
-              <ul class="unstyled">
-                <li><strong>Category</strong></li>
+              <ul class="nav nav-list">
+                <li class="nav-header">Category</li>
                 <li>
                 <select name="selectedCategory" id="selectedCategory" class="span2" onchange="selectCategory()">
                   <option>All</option>
@@ -291,9 +291,7 @@
                   <li><input type="radio" name="optionRadios" id="optionSideBySide" value="optionSideBySide" checked onclick="onOverviewConfigClick()" /> Side by side</li>
                   <li><input type="radio" name="optionRadios" id="optionOneAboveTheOther" value="optionOneAboveTheOther" onclick="onOverviewConfigClick()" /> One above the other</li>
                 </div>
-              </ul>
-              <ul class="unstyled">
-                <li><strong>Time Period in</strong></li>
+                <li class="nav-header">Time Period in</li>
                 <li>
                 <select name="selectedPeriod" id="selectedPeriod" class="span2" onchange="selectPeriod()">
                   <option>Years</option>

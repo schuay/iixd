@@ -21,7 +21,7 @@
 
     <script language="javascript">
 
-      <!-- Navigation; switching between main views. -->
+      /* Navigation; switching between main views. */
 
       function resetNav() {
         $("#details-main").get(0).style.display = "none";
@@ -70,7 +70,7 @@
 				clearAlerts();
       }
 
-      <!-- Pops up the advanced search dialog. -->
+      /* Pops up the advanced search dialog. */
 
       function onAdvancedSearchClick() {
         $("#advanced-search-dialog").dialog("open");
@@ -85,7 +85,7 @@
           modal: true});
       });
 
-      <!-- Overview page. -->
+      /* Overview page. */
 
       function onOverviewConfigClick() {
         if(document.getElementById("optionSideBySide").checked == true) {
@@ -102,7 +102,7 @@
         $( "#datepicker_to" ).datepicker();
       });
 
-      <!-- Settings page. -->
+      /* Settings page. */
 
       function onSaveSettingsClick() {
         if(isBudgetLimitEmpty()) {
@@ -184,7 +184,7 @@
         document.getElementById("showPeriodInDays").style.display = "none";
       }
 
-      <!-- Details page -->
+      /* Details page */
 
       var categories = ["Rent","Power","Heating","Water","Food","Misc Stuff"];
 

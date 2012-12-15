@@ -399,10 +399,13 @@
             <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
               <strong>Error!</strong> Please enter a description, category, date, interval and amount.
             </div>
-            <div class="offset7">
-              <input type="button" onclick="onNewEntry()" class="btn" value="Submit"/>
-            </div>
+
+            <button onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin">Submit</button>
+
           </form>
+
+          <button onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
+
           <table class="table table-bordered">
             <caption></caption>
             <thead>

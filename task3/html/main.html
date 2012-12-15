@@ -177,33 +177,35 @@
         }
       }
 		
-		function clearSelectedPeriods() {
-          document.getElementById("showPeriodInYears").style.display = "none";
-          document.getElementById("showPeriodInWeeks").style.display = "none";
-          document.getElementById("showPeriodInMonths").style.display = "none";
-          document.getElementById("showPeriodInDays").style.display = "none";
-		}
+      function clearSelectedPeriods() {
+        document.getElementById("showPeriodInYears").style.display = "none";
+        document.getElementById("showPeriodInWeeks").style.display = "none";
+        document.getElementById("showPeriodInMonths").style.display = "none";
+        document.getElementById("showPeriodInDays").style.display = "none";
+      }
 
-          <!-- Details page -->
-  	var categories = ["Rent","Power","Heating","Water","Food","Misc Stuff"];
+      <!-- Details page -->
+
+      var categories = ["Rent","Power","Heating","Water","Food","Misc Stuff"];
+
       $(function() {
         $("#newExpenseDate").datepicker();
-				$("#newExpenseCategory").typeahead({
-					source: categories,
-				});
+        $("#newExpenseCategory").typeahead({
+          source: categories,
+        });
       });
 		
-		function onNewEntry() {
-			if (document.getElementById("newExpenseDesc").value == "" ||
-			    document.getElementById("newExpenseCategory").value == "" ||
-			    document.getElementById("newExpenseDate").value == "" ||
-					! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
-      	document.getElementById("newExpenseAlertError").style.display = "block";
-      } else {
-      	document.getElementById("newExpenseAlertError").style.display = "none";
-				document.forms['newExpense'].submit();
-			}
-		}
+      function onNewEntry() {
+        if (document.getElementById("newExpenseDesc").value == "" ||
+          document.getElementById("newExpenseCategory").value == "" ||
+          document.getElementById("newExpenseDate").value == "" ||
+          ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
+          document.getElementById("newExpenseAlertError").style.display = "block";
+        } else {
+          document.getElementById("newExpenseAlertError").style.display = "none";
+          document.forms['newExpense'].submit();
+        }
+      }
 
     </script>
 

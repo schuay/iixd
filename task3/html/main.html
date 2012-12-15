@@ -15,7 +15,8 @@
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet">
 
-    <script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
     <script language="javascript">
@@ -33,6 +34,8 @@
 
         $("#navbar-search").get(0).style.display = "none";
         $("#navbar-overview-config").get(0).style.display = "none";
+
+      	$("#newExpenseAlertError").get(0).style.display = "none";
       }
 
       function onDetailsClick() {
@@ -172,10 +175,25 @@
 		}
 
           <!-- Details page -->
-      
+  	var categories = ["Rent","Power","Heating","Water","Food","Misc Stuff"];
       $(function() {
-        $("#datefield").datepicker();
+        $("#newExpenseDate").datepicker();
+				$("#newExpenseCategory").typeahead({
+					source: categories,
+				});
       });
+		
+		function onNewEntry() {
+			if (document.getElementById("newExpenseDesc").value == "" ||
+			    document.getElementById("newExpenseCategory").value == "" ||
+			    document.getElementById("newExpenseDate").value == "" ||
+					! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
+      	document.getElementById("newExpenseAlertError").style.display = "block";
+      } else {
+      	document.getElementById("newExpenseAlertError").style.display = "none";
+				document.forms['newExpense'].submit();
+			}
+		}
 
     </script>
 
@@ -322,24 +340,40 @@
         <!-- The details main screen. -->
 
   <div id="details-main" class="span9" style="display: block">
-          <div class="">
+						  <form id="newExpense" action="main.html" method="get">
+						  <h4>New expense</h4>
               <table class="table table-bordered">
-              <caption>Insert new expense</caption>
-                <tbody>
                     <tr>
-                        <td><input type="text" placeholder="Description" class="input-block-level"/></td>
-                        <td><input type="text" placeholder="Category" class="input-block-level"/></td>
-                        <td><input type="text" placeholder="Date" class="input-block-level" id="datefield"/></td>
-                        <td><input type="text" placeholder="14.12.2012" class="input-block-level"/></td>
-                        <td><input type="text" placeholder="Interval" class="input-block-level"/></td>
-                        <td><input type="text" placeholder="Amount" class="input-block-level"/></td>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Interval</th>
+                        <th>Amount</th>
+									  </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
+                        <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
+                        <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
+                        <td>
+													<select class="span2" name="newExpenseInterval">
+														<option>none</option>
+														<option>anually</option>
+														<option>monthly</option>
+														<option>weekly</option>
+														<option>daily</option>
+													</select>
+												</td>
+                        <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
                     </tr>
-                </tbody>
                 </table>
-                <div class="span2 offset7">
-                    <input type="submit"/>
-                    <div class="row"> </div>
-                </div>
+      					<!-- Conditionally shown if username or password is empty and button is clicked -->
+     						<div id="newExpenseAlertError" class="alert alert-error" style="display: none">
+        					<strong>Error!</strong> Please enter a description, category, date, interval and amount.
+								</div>
+								<div class="offset7">
+									<input type="button" onclick="onNewEntry()" class="btn" value="Submit"/>
+							  </div>
+							</form>
               <table class="table table-bordered">
                 <caption></caption>
                 <thead>
@@ -353,6 +387,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <script language="javascript">
+											var parts = window.location.search.substr(1).split("&");
+											var $_GET = {};
+											for (var i = 0; i < parts.length; i++) {
+												var temp = parts[i].split("=");
+												$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+											}
+
+											var curDate = new Date();
+											if (typeof $_GET['newExpenseAmount'] != 'undefined') {
+												document.write("<tr class=\"error\"><td>"+$_GET['newExpenseDesc']+
+														"</td><td>"+$_GET['newExpenseCategory']+
+														"</td><td>"+$_GET['newExpenseDate']+
+														"</td><td>"+(curDate.getMonth()+1)+"/"+curDate.getDate()+"/"+curDate.getFullYear()+
+														"</td><td>"+$_GET['newExpenseInterval']+
+														"</td><td>"+$_GET['newExpenseAmount']+" &euro;</td></tr>");
+											}
+                    </script>
                     <tr class="error">
                         <td>Miete</td>
                         <td>Miete</td>
@@ -387,7 +439,6 @@
                     </tr>
                 </tbody>
               </table>
-          </div>
         </div>
 
         <!-- The settings main screen. -->

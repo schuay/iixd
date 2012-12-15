@@ -83,6 +83,7 @@
 
       $(function() {
         $("#advanced-search-dialog").dialog({
+          title: "Advanced Search",
           autoOpen: false,
           height: 300,
           width: 350,
@@ -265,18 +266,21 @@
 
       $(function() {
         $("#new-expense-dialog").dialog({
+          title: "New Expense",
           autoOpen: false,
           resizable: false,
           draggable: false,
           width: 693,
           position: { my: "left top", at: "left bottom", of: "#new-expense" }});
         $("#edit-example-expense-dialog").dialog({
+          title: "Edit Expense",
           autoOpen: false,
           resizable: false,
           draggable: false,
           width: 693,
           position: { my: "left top", at: "left bottom", of: "#example-expense" }});
         $("#edit-example-schedule-dialog").dialog({
+          title: "Edit Schedule",
           autoOpen: false,
           resizable: false,
           draggable: false,
@@ -637,7 +641,6 @@
         <!-- The new expense dialog. -->
 
         <form id="new-expense-dialog" name="newExpense" action="main.html" method="get">
-          <h4>New Expense</h4>
           <table class="table table-bordered">
             <tr>
               <th>Description</th>
@@ -679,7 +682,6 @@
         <!-- The edit dialog for our example expense. -->
 
         <form id="edit-example-expense-dialog" name="editExpense" action="main.html" method="get">
-          <h4>Edit Expense</h4>
           <table class="table table-bordered">
             <tr>
               <th>Description</th>
@@ -713,7 +715,6 @@
         <!-- The edit dialog for our example schedule. -->
 
         <form id="edit-example-schedule-dialog" name="editSchedule" action="main.html" method="get">
-          <h4>Edit Schedule</h4>
           <table class="table table-bordered">
             <tr>
               <th>Description</th>

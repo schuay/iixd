@@ -15,8 +15,7 @@
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link type="text/css" href="../bootstrap/css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet">
 
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="../bootstrap/js/jquery-1.6.2.min.js"></script>
     <script src="../bootstrap/js/jquery-ui-1.8.16.custom.min.js"></script>
 
     <script language="javascript">
@@ -188,9 +187,11 @@
 
       $(function() {
         $("#newExpenseDate").datepicker();
+        /* Not working with the old jquery required by our bootstrap theme.
         $("#newExpenseCategory").typeahead({
           source: categories,
         });
+        */
       });
 		
       function onNewEntry() {

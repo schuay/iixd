@@ -182,6 +182,12 @@
           document.getElementById("alert-error-new-expense").style.display = "block";
         } else {
           document.getElementById("alert-error-new-expense").style.display = "none";
+
+          /* Set the creation date. */
+          var curDate = new Date();
+          document.getElementById("newExpenseCreatDate").value = (curDate.getMonth()+1)+"/"+
+              curDate.getDate()+"/"+curDate.getFullYear();
+
           document.forms['newExpense'].submit();
         }
       }
@@ -203,6 +209,11 @@
         document.getElementById("editExpenseCategory").value = $_GET['newExpenseCategory'] || "";
         document.getElementById("editExpenseDate").value = $_GET['newExpenseDate'] || "";
         document.getElementById("editExpenseAmount").value = $_GET['newExpenseAmount'] || "";
+
+        /* Restore the hidden fields too, so they remain in the GET. */
+        document.getElementById("editExpenseCreatDate").value = $_GET['newExpenseCreatDate'] || "";
+        document.getElementById("editExpenseInterval").value = $_GET['newExpenseInterval'] || "";
+
         $("#edit-example-expense-dialog").dialog("open");
       }
 
@@ -388,12 +399,10 @@
             <tbody>
               <script language="javascript">
                 if (typeof $_GET['newExpenseAmount'] != 'undefined') {
-                  var curDate = new Date();
-
                   document.write("<tr id=\"example-expense\" class=\"error\"><td>"+$_GET['newExpenseDesc']+
                       "</td><td>"+$_GET['newExpenseCategory']+
                       "</td><td>"+$_GET['newExpenseDate']+
-                      "</td><td>"+(curDate.getMonth()+1)+"/"+curDate.getDate()+"/"+curDate.getFullYear()+
+                      "</td><td>"+$_GET['newExpenseCreatDate']+
                       "</td><td>"+$_GET['newExpenseAmount']+" &euro;"+
                       "</td><td>"+
                       "<a class=\"btn\" href=\"#\" onClick=\"onEditEntryClick()\">"+
@@ -598,6 +607,9 @@
             <strong>Error!</strong> Please enter a description, category, date, interval and amount.
           </div>
 
+          <!-- Hidden field for the creation date. We need this for the edit-example-schedule-dialog. -->
+          <input type="hidden" name="newExpenseCreatDate" id="newExpenseCreatDate" style="display: none" />
+
           <input type="button" onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
 
         </form>
@@ -626,6 +638,11 @@
           <div id="alert-error-edit-expense" class="alert alert-error" style="display: none">
             <strong>Error!</strong> Please enter a description, category, date and amount.
           </div>
+
+          <!-- Hidden fields for the creation date and interval. We need these for the
+            edit-example-schedule-dialog. -->
+          <input type="hidden" name="newExpenseCreatDate" id="editExpenseCreatDate" style="display: none" />
+          <input type="hidden" name="newExpenseInterval" id="editExpenseInterval" style="display: none" />
 
           <input type="button" onclick="onEditEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
 

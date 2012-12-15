@@ -205,6 +205,20 @@
         }
       }
 
+      function onNewExpenseClick() {
+        $("#new-expense-dialog").dialog("open");
+      }
+
+      $(function() {
+        $("#new-expense-dialog").dialog({
+          autoOpen: false,
+          resizable: false,
+          draggable: false,
+          height: 300,
+          width: 693,
+          position: { my: "left top", at: "left bottom", of: "#new-expense" }});
+      });
+
     </script>
 
     <style type="text/css">
@@ -367,44 +381,7 @@
 
         <div id="details-main" class="span9" style="display: block">
 
-          <form id="newExpense" action="main.html" method="get">
-            <h4>New Expense</h4>
-            <table class="table table-bordered">
-              <tr>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Interval</th>
-                <th>Amount</th>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
-                <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
-                <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
-                <td>
-                  <select class="span2" name="newExpenseInterval">
-                    <option>none</option>
-                    <option>yearly</option>
-                    <option>monthly</option>
-                    <option>weekly</option>
-                    <option>daily</option>
-                  </select>
-                </td>
-                <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
-              </tr>
-            </table>
-
-            <!-- Conditionally shown. -->
-
-            <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
-              <strong>Error!</strong> Please enter a description, category, date, interval and amount.
-            </div>
-
-            <button onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin">Submit</button>
-
-          </form>
-
-          <button onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
+          <button id="new-expense" onclick="onNewExpenseClick()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
 
           <table class="table table-bordered">
             <caption></caption>
@@ -579,6 +556,48 @@
             </form>
           </div>
         </div>
+
+        <!-- The new expense dialog. -->
+
+        <form id="new-expense-dialog" action="main.html" method="get">
+          <h4>New Expense</h4>
+          <table class="table table-bordered">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Interval</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
+              <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
+              <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
+              <td>
+                <select class="span2" name="newExpenseInterval">
+                  <option>none</option>
+                  <option>yearly</option>
+                  <option>monthly</option>
+                  <option>weekly</option>
+                  <option>daily</option>
+                </select>
+              </td>
+              <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
+            </tr>
+          </table>
+
+          <!-- Conditionally shown. -->
+
+          <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Please enter a description, category, date, interval and amount.
+          </div>
+
+          <button onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin">Submit</button>
+
+        </form>
+
+
+        <!-- The advanced search dialog. -->
 
         <div id="advanced-search-dialog">
           This dialog is here to display advanced search options.

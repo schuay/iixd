@@ -85,8 +85,7 @@
         $("#advanced-search-dialog").dialog({
           title: "Advanced Search",
           autoOpen: false,
-          height: 300,
-          width: 350,
+          resizable: false,
           position: { my: "left bottom", at: "left top", of: "#advanced-search" },
           modal: true});
       });
@@ -754,11 +753,46 @@
 
         <!-- The advanced search dialog. -->
 
-        <div id="advanced-search-dialog">
-          This dialog is here to display advanced search options.
-          We can put any controls we want into this div.
-          For more information, see http://jqueryui.com/dialog/#modal-form
-        </div>
+        <form id="advanced-search-dialog">
+          <ul class="nav nav-list">
+            <li class="nav-header">Description</li>
+            <li><input class="input-block-level" type="text" placeholder="Description" /></li>
+            <li class="nav-header">Category</li>
+            <li><input class="input-block-level" type="text" placeholder="Category" /></li>
+            <li class="nav-header">Created on</li>
+            <li>
+              <table>
+                <tr>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                </tr>
+              </table>
+            </li>
+            <li class="nav-header">Date</li>
+            <li>
+              <table>
+                <tr>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                </tr>
+              </table>
+            </li>
+            <li class="nav-header">Amount</li>
+            <li>
+              <table>
+                <tr>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <a class="btn" href="#" onClick="onSearchClick()"><i class="icon-search"></i></a>
+                  </td>
+                </tr>
+              </table>
+            </li>
+          </ul>
+        </form>
       </div>
     </div>
 

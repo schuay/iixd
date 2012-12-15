@@ -42,6 +42,7 @@
 
         $("#new-expense-dialog").dialog("close");
         $("#edit-example-expense-dialog").dialog("close");
+        $("#edit-example-schedule-dialog").dialog("close");
       }
 
       function onDetailsClick() {
@@ -169,7 +170,15 @@
       $(function() {
         $("#newExpenseDate").datepicker();
         $("#editExpenseDate").datepicker();
+        $("#editScheduleDate").datepicker();
+
         $("#newExpenseCategory").typeahead({
+          source: categories,
+        });
+        $("#editExpenseCategory").typeahead({
+          source: categories,
+        });
+        $("#editScheduleCategory").typeahead({
           source: categories,
         });
       });
@@ -204,6 +213,18 @@
         }
       }
 
+      function onEditSched() {
+        if (document.getElementById("editScheduleDesc").value == "" ||
+          document.getElementById("editScheduleCategory").value == "" ||
+          document.getElementById("editScheduleDate").value == "" ||
+          ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("editScheduleAmount").value)) {
+          document.getElementById("alert-error-edit-schedule").style.display = "block";
+        } else {
+          document.getElementById("alert-error-edit-schedule").style.display = "none";
+          document.forms['editSchedule'].submit();
+        }
+      }
+
       function onEditEntryClick() {
         document.getElementById("editExpenseDesc").value = $_GET['newExpenseDesc'] || "";
         document.getElementById("editExpenseCategory").value = $_GET['newExpenseCategory'] || "";
@@ -215,6 +236,19 @@
         document.getElementById("editExpenseInterval").value = $_GET['newExpenseInterval'] || "";
 
         $("#edit-example-expense-dialog").dialog("open");
+      }
+
+      function onEditSchedClick() {
+        document.getElementById("editScheduleDesc").value = $_GET['newExpenseDesc'] || "";
+        document.getElementById("editScheduleCategory").value = $_GET['newExpenseCategory'] || "";
+        document.getElementById("editScheduleDate").value = $_GET['newExpenseDate'] || "";
+        document.getElementById("editScheduleInterval").value = $_GET['newExpenseInterval'] || "";
+        document.getElementById("editScheduleAmount").value = $_GET['newExpenseAmount'] || "";
+
+        /* Restore the hidden fields too, so they remain in the GET. */
+        document.getElementById("editScheduleCreatDate").value = $_GET['newExpenseCreatDate'] || "";
+
+        $("#edit-example-schedule-dialog").dialog("open");
       }
 
       function onRemoveEntryClick() {
@@ -239,6 +273,12 @@
           draggable: false,
           width: 693,
           position: { my: "left top", at: "left bottom", of: "#example-expense" }});
+        $("#edit-example-schedule-dialog").dialog({
+          autoOpen: false,
+          resizable: false,
+          draggable: false,
+          width: 693,
+          position: { my: "left top", at: "left bottom", of: "#example-schedule" }});
       });
 
       /* Parse the GET-parameters for the example-entry */
@@ -666,6 +706,46 @@
 
         </form>
 
+        <!-- The edit dialog for our example schedule. -->
+
+        <form id="edit-example-schedule-dialog" name="editSchedule" action="main.html" method="get">
+          <h4>Edit Schedule</h4>
+          <table class="table table-bordered">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Start date</th>
+              <th>Interval</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Description" class="input-block-level" id="editScheduleDesc" name="newExpenseDesc"/></td>
+              <td><input type="text" placeholder="Category" class="input-block-level" id="editScheduleCategory" name="newExpenseCategory" data-provide="typeahead" data-items="6"/></td>
+              <td><input type="text" placeholder="Start date" class="input-block-level" id="editScheduleDate" name="newExpenseDate"/></td>
+              <td>
+                <select class="span2" id="editScheduleInterval" name="newExpenseInterval">
+                  <option>yearly</option>
+                  <option>monthly</option>
+                  <option>weekly</option>
+                  <option>daily</option>
+                </select>
+              </td>
+              <td><input type="text" placeholder="Amount" class="input-block-level"id="editScheduleAmount" name="newExpenseAmount"/></td>
+            </tr>
+          </table>
+
+          <!-- Conditionally shown. -->
+
+          <div id="alert-error-edit-schedule" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Please enter a description, category, date and amount.
+          </div>
+
+          <!-- Hidden field for the creation date. -->
+          <input type="hidden" name="newExpenseCreatDate" id="editScheduleCreatDate" style="display: none" />
+
+          <input type="button" onclick="onEditSched()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+
+        </form>
 
         <!-- The advanced search dialog. -->
 

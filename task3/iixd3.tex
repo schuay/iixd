@@ -6,6 +6,7 @@
 \usepackage[ngerman]{babel}
 \usepackage[pdfborder={0 0 0}]{hyperref}
 \usepackage{lmodern,textcomp}
+\usepackage{subfigure}
 
 \title{
     183.289 VU Interface \& Interaction Design \\
@@ -80,7 +81,14 @@ deutlicher Feedback in Form eines roten Alerts angezeigt.
 
 \subsubsection{Password Recovery}
 
-% TODO: Side-by-side comparison images
+\begin{figure}
+\centering
+\mbox{
+    \subfigure{\includegraphics[width=0.5\textwidth]{password-recovery-ip}}\quad
+    \subfigure{\includegraphics[width=0.5\textwidth]{password-recovery-lfp}}
+}
+\caption{Password Recovery} \label{fig:password-recovery}
+\end{figure}
 
 Das Layout ist im IP um einiges simpler gestaltet als im LFP. Wichtige Elemente
 sind hervorgehoben, and Zusatzinfos zu n\"achsten Schritten nach der ausf\"ullen

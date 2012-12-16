@@ -102,4 +102,51 @@ des Formulars werden erst angezeigt wenn sie relevant sind.
 Welche Aspekte konnten in Ihrem interaktiven Prototypen nur unvollständig umgesetzt werden (z.B. weil der Umsetzungsaufwand zu hoch wäre)? Beschreiben Sie eventuelle Kompromisslösungen ausreichend genau, dass Ihre geplante und beabsichtigte Funktionsweise für den Leser klar verständlich und nachvollziehbar ist.
 \end{comment}
 
+\begin{itemize}
+    \item Registrierung, Login und Password Recovery testen die Eingaben zwar auf
+            Korrektheit, haben aber keine echte Nutzerdatenbank. Der Login akzeptiert
+            jede Benutzername/Passwort-Kombination.
+    \item Das Sortieren nach Spalten unter \glqq Expenses\grqq, \glqq
+            Recurring Expenses\grqq\space und dem Suchergebnis ist mit dem Prototypen
+            nicht m\"oglich.
+    \item Der \glqq Add New Recurring Expense\grqq\space Dialog führt
+            Fehler\"uberprüfung durch, es ist aber nicht m\"oglich einen neuen
+            Eintrag hinzuzuf\"ugen.
+    \item Die \glqq Edit\grqq\space und \glqq Remove\grqq\space Buttons unter \glqq
+            Recurring Expenses\grqq\space funktionieren wegen des hohen Aufwands
+            nicht. Der \glqq Edit\grqq\space Dialog sieht aus wie der zum
+            Hinzuf\"ugen und wird unter der entsprechenden Zeile angezeigt.
+    \item Die Suche und erweiterte Suche liefern keine echten Ergebnisse sondern nur
+            eine statische Seite.
+    \item Die Buttons \glqq August 2012\grqq, \glqq July 2012\grqq\space und \glqq
+            June 2012\grqq\space unter \glqq Expenses\grqq\space haben keine
+            Funktion.
+    \item Die Einstellungen unter \glqq Settings\grqq\space wirken sich nicht auf
+            andere Anzeigen aus und gehen nachdem die Seite neu geladen wurde
+            verloren.
+    \item Unabh\"angig davon welcher Zeitraum oder welche Kategorie unter \glqq
+            Graphs\grqq\space ausgew\"ahlt wurde, gibt es nur zwei Graphen als
+            Bilder.
+    \item Unter \glqq Expenses\grqq\space kann man mit dem \glqq Add New
+            Expense\grqq\space Dialog genau einen neuen Eintrag hinzuf\"ugen indem
+            man nach Eingabe der Daten auf \glqq Submit\grqq\space klickt. \glqq
+            Submit and Continue\grqq\space f\"ugt keinen Datensatz hinzu. Der neue
+            Eintrag wird \"uber GET-Parameter gesichert und erscheint im Suchergebnis
+            und unter \glqq Expenses\grqq\space jeweils an erster Stelle. F\"ur
+            diesen und nur diesen Eintrag funktionieren die \glqq Edit\grqq\space und
+            \glqq Remove\grqq\space Buttons.
+    \item Wenn ein funktionierender \glqq Submit\grqq\space Button gedr\"uckt wird
+            und die Seite neu geladen wird landet man wieder unter \glqq
+            Expenses\grqq\space auf der Seite f\"ur Oktober 2012. Tats\"achlich
+            sollte man aber auf der selben Seite bleiben. Das ist aber relativ
+            schwierig und komplex umzusetzen.
+    \item Beim Eingeben einer Kategorie (\glqq Category\grqq-Feld) sollten nicht nur
+            Vorschl\"age angezeigt werden, sondern auch bereits angelegte Kategorien
+            \"uber ein Drop-Down-Men\"u ausgew\"ahlt werden k\"onnen. Das war aber
+            mit den gegebenen Mitteln zu aufw\"andig.
+    \item Der Beispieleintrag, den man wie oben erkl\"art anlegen kann, ver\"andert
+            weder die Grafiken unter \glqq Graphs\grqq, noch den Balken und die Daten
+            in der Zusammenfassung links unten.
+\end{itemize}
+
 \end{document}

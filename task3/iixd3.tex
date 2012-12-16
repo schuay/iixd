@@ -27,6 +27,30 @@
 
 \clearpage
 \section{Umsetzung des Prototypen}
+
+Der interaktive Prototyp \emph{Finance Buddy} wurde mit Hilfe von Twitter
+Bootstrap\footnote{\url{http://twitter.github.com/bootstrap/index.html}}
+und jQuery-UI\footnote{\url{http://jqueryui.com/} und
+\url{http://addyosmani.github.com/jquery-ui-bootstrap/}} in HTML5 realisiert.
+
+Als Vorlage wurde der angepasste Low-Fidelity-Prototype der zweiten Aufgabe von Interface \&
+Interaction Design verwendet. Es wurden dabei einzelne Screens nacheinander als
+entsprechende HTML Seiten erstellt. Kleinere, von einander getrennte Screens mit
+wenig gemeinsamen Elementen (wie zum Beispiel Login, Registration, und Password Recovery)
+sind als separate HTML Seiten gehalten worden, w\"ahrend der eigentliche Hauptteil
+der Applikation in einer einzigen Seite realisiert wurde.
+
+Der Gedanke dahinert war vor allem Arbeitsersparnis. Durch viele gemeinsame Elemente (unter
+anderem die gesamte Leiste auf der linken Seite des Bildschirms) h\"atte sich der
+Arbeitsaufwand vervielfacht wenn die jeweiligen Untersektionen (\emph{Expenses},
+\emph{Recurring Expenses}, \emph{Graphs}, etc\ldots) separate HTML Seiten waeren.
+
+Die L\"osung st\"utzt sich somit auf JavaScript um UI Elemente dynamisch ein- und
+auszublenden oder anderwertig zu ver\"andern. Zum Beispiel wird bei einem Click auf
+den \emph{Recurring Expenses} Entrag die passende rechte Seite des Screens eingeblendet,
+die linke Seite wird mit den richtigen Elementen bef\"ullt, und der Navigationseintrag
+wird als aktiv markiert.
+
 \subsection{Abweichungen vom urspr\"unglichen Konzept}
 
 \begin{comment}

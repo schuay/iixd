@@ -85,6 +85,21 @@
 				clearAlerts();
       }
 
+      function onAdvSearchClick() {
+        var from = document.getElementById("advAmountFrom").value;
+        var to = document.getElementById("advAmountTo").value;
+
+        if (from != "" || to != "") {
+          if (! /^[0-9]+(\.[0-9][0-9]?)?$/.test(from) || ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(to) || from > to) {
+            document.getElementById("alert-error-advanced-search").style.display = "block";
+            return;
+          }
+        }
+
+        document.getElementById("alert-error-advanced-search").style.display = "none";
+        onSearchClick();
+      }
+
       /* Pops up the advanced search dialog. */
 
       function onAdvancedSearchClick() {
@@ -98,6 +113,12 @@
           resizable: false,
           position: { my: "left bottom", at: "left top", of: "#advanced-search" },
           modal: true});
+        $("#advCreatFrom, #advCreatTo").daterangepicker();
+        $("#advDateFrom, #advDateTo").daterangepicker();
+        $("#advCategory").typeahead({
+          source: categories,
+          items: categories.length
+        });
       });
 
       /* Overview page. */
@@ -341,6 +362,12 @@
 
       .btn-margin {
         margin-bottom: 20px;
+      }
+
+      /* FIXME: dirty hack but works for now.
+       * Make sure the daterangepicker is always on top. */
+      .ui-daterangepickercontain {
+        z-index: 9999999;
       }
     </style>
 
@@ -827,13 +854,13 @@
             <li class="nav-header">Description</li>
             <li><input class="input-block-level" type="text" placeholder="Description" /></li>
             <li class="nav-header">Category</li>
-            <li><input class="input-block-level" type="text" placeholder="Category" /></li>
+            <li><input class="input-block-level" id="advCategory" type="text" placeholder="Category" /></li>
             <li class="nav-header">Created on</li>
             <li>
               <table>
                 <tr>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" id="advCreatFrom" type="text" placeholder="From date" /></td>
+                  <td><input class="input-block-level" id="advCreatTo" type="text" placeholder="To date" /></td>
                 </tr>
               </table>
             </li>
@@ -841,8 +868,8 @@
             <li>
               <table>
                 <tr>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" id="advDateFrom" type="text" placeholder="From date" /></td>
+                  <td><input class="input-block-level" id="advDateTo" type="text" placeholder="To date" /></td>
                 </tr>
               </table>
             </li>
@@ -850,12 +877,15 @@
             <li>
               <table>
                 <tr>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
-                  <td><input class="input-block-level" type="text" placeholder="Category" /></td>
+                  <td><input class="input-block-level" id="advAmountFrom" type="text" placeholder="From amount" /></td>
+                  <td><input class="input-block-level" id="advAmountTo" type="text" placeholder="To amount" /></td>
                 </tr>
                 <tr>
                   <td colspan="2">
-                    <a class="btn" href="#" onClick="onSearchClick()"><i class="icon-search"></i></a>
+                    <div id="alert-error-advanced-search" class="alert alert-error" style="display: none">
+                      <strong>Error!</strong> Please enter valid numbers for "From amount" and "To amount".
+                    </div>
+                    <a class="btn" href="#" onClick="onAdvSearchClick()"><i class="icon-search"></i></a>
                   </td>
                 </tr>
               </table>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="17cm" height="3cm" viewBox="299 181 322 59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="301" y="201" width="299" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="301" y="201" width="299" height="38"/>
+  </g>
+  <g>
+    <rect style="fill: #ff0000" x="600" y="201" width="20" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="201" width="20" height="38"/>
+  </g>
+  <text font-size="16.9331" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="391" y="226">
+    <tspan x="391" y="226">1,600 €/1,500 €</tspan>
+  </text>
+  <text font-size="16.9331" style="fill: #ff0000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="564" y="197">
+    <tspan x="564" y="197">-100 €</tspan>
+  </text>
+</svg>

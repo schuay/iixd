@@ -34,6 +34,9 @@
         $("#settings-main").get(0).style.display = "none";
         $("#search-main").get(0).style.display = "none";
 
+        $("#info-main").get(0).style.display = "block";
+        $("#info-page2").get(0).style.display = "none";
+
         $("#nav-details").get(0).className = "";
         $("#nav-overview").get(0).className = "";
         $("#nav-schedule").get(0).className = "";
@@ -57,6 +60,8 @@
 
       function onDetails2Click() {
         resetNav();
+        $("#info-main").get(0).style.display = "none";
+        $("#info-page2").get(0).style.display = "block";
         $("#details-page2").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
@@ -474,7 +479,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div id="info-main" class="row" style="display: block">
             <div class="well">
               <ul class="nav nav-list">
                 <li class="nav-header">October 2012</li>
@@ -493,6 +498,27 @@
               </ul>
             </div>
           </div>
+
+          <div id="info-page2" class="row" style="display: none">
+            <div class="well">
+              <ul class="nav nav-list">
+                <li class="nav-header">September 2012</li>
+                <li class="cmonth"><em>Money left:</em>
+                <p class="col-green">900 &euro;</p>
+                <p class="col-green">(60% of Budget)</p></li>
+                <li class="cmonth"><em>Expenses:</em>
+                <p class="col-green">600 &euro;</p>
+                <p class="col-green">(40% of Budget)</p></li>
+                <li class="cmonth"><em>Deviation (previous):</em>
+                <p>0 &euro; (0%)</p></li>
+                <li class="cmonth"><em>Deviation (average):</em>
+                <p class="col-green">432.89 &euro; (+30%)</p></li>
+                <li class="cmonth"><em>Limit:</em>
+                <p>1.500 &euro;</p></li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
         <!-- The details main screen. -->

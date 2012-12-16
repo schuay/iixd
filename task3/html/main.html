@@ -31,6 +31,7 @@
         $("#overview-main").get(0).style.display = "none";
         $("#schedule-main").get(0).style.display = "none";
         $("#settings-main").get(0).style.display = "none";
+        $("#search-main").get(0).style.display = "none";
 
         $("#nav-details").get(0).className = "";
         $("#nav-overview").get(0).className = "";
@@ -43,6 +44,7 @@
         $("#new-expense-dialog").dialog("close");
         $("#edit-example-expense-dialog").dialog("close");
         $("#edit-example-schedule-dialog").dialog("close");
+        $("#advanced-search-dialog").dialog("close");
       }
 
       function onDetailsClick() {
@@ -50,6 +52,14 @@
         $("#details-main").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
+      }
+
+      function onSearchClick() {
+        resetNav();
+        $("#search-main").get(0).style.display = "block";
+        $("#navbar-search").get(0).style.display = "block";
+        document.forms['search-form'].reset();
+        document.forms['advanced-search-form'].reset();
       }
 
       function onOverviewClick() {
@@ -228,6 +238,18 @@
         }
       }
 
+      function onEditEntryDetailClick() {
+        $("#edit-example-expense-dialog").dialog({
+          position: { my: "left top", at: "left bottom", of: "#example-expense" }});
+        onEditEntryClick();
+      }
+
+      function onEditEntrySearchClick() {
+        $("#edit-example-expense-dialog").dialog({
+          position: { my: "left top", at: "left bottom", of: "#example-search" }});
+        onEditEntryClick();
+      }
+
       function onEditEntryClick() {
         document.getElementById("editExpenseDesc").value = $_GET['newExpenseDesc'] || "";
         document.getElementById("editExpenseCategory").value = $_GET['newExpenseCategory'] || "";
@@ -353,9 +375,9 @@
                 <li class="nav-header">Search</li>
                 <li>
                 <div class="input-append">
-                  <form class="navbar-search">
+                  <form class="navbar-search" name="search-form">
                     <input type="text" style="width: 130px"/>
-                    <a class="btn" href="#"><i class="icon-search"></i></a>
+                    <a class="btn" href="#" onClick="onSearchClick()"><i class="icon-search"></i></a>
                   </form>
                 </div>
                 </li>
@@ -452,7 +474,7 @@
                       "</td><td>"+$_GET['newExpenseCreatDate']+
                       "</td><td>"+$_GET['newExpenseAmount']+" &euro;"+
                       "</td><td>"+
-                      "<a class=\"btn\" href=\"#\" onClick=\"onEditEntryClick()\">"+
+                      "<a class=\"btn\" href=\"#\" onClick=\"onEditEntryDetailClick()\">"+
                         "<i class=\"icon-edit\"></i>"+
                       "</a>\n<a class=\"btn\" href=\"#\" onClick=\"onRemoveEntryClick()\">"+
                         "<i class=\"icon-remove\"></i>"+
@@ -637,6 +659,53 @@
           </div>
         </div>
 
+        <!-- The search results. -->
+
+        <div id="search-main" class="span9" style="display: none">
+          <h4>Search results</h4>
+          <table class="table table-bordered">
+            <caption></caption>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Created on</th>
+                <th>Amount</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <script language="javascript">
+                if (typeof $_GET['newExpenseAmount'] != 'undefined') {
+                  document.write("<tr id=\"example-search\" class=\"error\"><td>"+$_GET['newExpenseDesc']+
+                      "</td><td>"+$_GET['newExpenseCategory']+
+                      "</td><td>"+$_GET['newExpenseDate']+
+                      "</td><td>"+$_GET['newExpenseCreatDate']+
+                      "</td><td>"+$_GET['newExpenseAmount']+" &euro;"+
+                      "</td><td>"+
+                      "<a class=\"btn\" href=\"#\" onClick=\"onEditEntrySearchClick()\">"+
+                        "<i class=\"icon-edit\"></i>"+
+                      "</a>\n<a class=\"btn\" href=\"#\" onClick=\"onRemoveEntryClick()\">"+
+                        "<i class=\"icon-remove\"></i>"+
+                      "</a></td></tr>");
+                }
+              </script>
+              <tr>
+                <td>Power</td>
+                <td>Power</td>
+                <td>07.09.2012</td>
+                <td>01.06.2012</td>
+                <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <!-- The new expense dialog. -->
 
         <form id="new-expense-dialog" name="newExpense" action="main.html" method="get">
@@ -753,7 +822,7 @@
 
         <!-- The advanced search dialog. -->
 
-        <form id="advanced-search-dialog">
+        <form id="advanced-search-dialog" name="advanced-search-form">
           <ul class="nav nav-list">
             <li class="nav-header">Description</li>
             <li><input class="input-block-level" type="text" placeholder="Description" /></li>

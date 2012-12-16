@@ -225,8 +225,13 @@
         $("#newExpenseDate").datepicker();
         $("#editExpenseDate").datepicker();
         $("#editScheduleDate").datepicker();
+        $("#newRecExpenseDate").datepicker();
 
         $("#newExpenseCategory").typeahead({
+          source: categories,
+          items: categories.length
+        });
+        $("#newRecExpenseCategory").typeahead({
           source: categories,
           items: categories.length
         });
@@ -937,7 +942,7 @@
 
         <!-- The new recurring expense dialog. -->
 
-        <form id="new-recurring-expense-dialog" name="newExpense" action="main.html" method="get">
+        <form id="new-recurring-expense-dialog">
           <table class="table table-hover">
             <tr>
               <th>Description</th>
@@ -947,32 +952,28 @@
               <th>Amount</th>
             </tr>
             <tr>
-              <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
-              <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" /></td>
-              <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
+              <td><input type="text" placeholder="Description" class="input-block-level" id="newRecExpenseDesc" /></td>
+              <td><input type="text" placeholder="Category" class="input-block-level" id="newRecExpenseCategory" data-provide="typeahead" /></td>
+              <td><input type="text" placeholder="Date" class="input-block-level" id="newRecExpenseDate" /></td>
               <td>
-                <select class="span2" name="newExpenseInterval">
-                  <option>none</option>
+                <select class="span2">
                   <option>yearly</option>
                   <option>monthly</option>
                   <option>weekly</option>
                   <option>daily</option>
                 </select>
               </td>
-              <td><input type="text" placeholder="Amount" class="input-block-level" id="newExpenseAmount" name="newExpenseAmount"/></td>
+              <td><input type="text" placeholder="Amount" class="input-block-level" id="newRecExpenseAmount"/></td>
             </tr>
           </table>
 
           <!-- Conditionally shown. -->
 
-          <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
+          <div id="alert-error-new-recexpense" class="alert alert-error" style="display: none">
             <strong>Error!</strong> Please enter a description, category, date, interval and amount.
           </div>
 
-          <!-- Hidden field for the creation date. We need this for the edit-example-schedule-dialog. -->
-          <input type="hidden" name="newExpenseCreatDate" id="newExpenseCreatDate" style="display: none" />
-
-          <input type="button" onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+          <input type="button" onclick="onRecNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
 
         </form>
 

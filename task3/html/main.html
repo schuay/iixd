@@ -245,14 +245,37 @@
         });
       });
 		
+      function onNewEntryContinue() {
+        if (document.getElementById("newExpenseDesc").value == "" ||
+          document.getElementById("newExpenseCategory").value == "" ||
+          document.getElementById("newExpenseDate").value == "" ||
+          ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
+
+          $("#alert-error-new-expense").get(0).style.display = "block";
+          $("#alert-success-new-expense").get(0).style.display = "none";
+        } else {
+          $("#alert-success-new-expense").get(0).style.display = "none";
+          $("#alert-error-new-expense").get(0).style.display = "none";
+          $("#alert-success-new-expense").get(0).innerHTML = "'" +
+            $("#newExpenseDesc").get(0).value + "' has been entered successfully!";
+          $("#alert-success-new-expense").get(0).style.display = "block";
+
+          $("#newExpenseDesc").get(0).value = "";
+          $("#newExpenseDesc").get(0).focus();
+          $("#newExpenseValue").get(0).value = "";
+        }
+      }
+
       function onNewEntry() {
         if (document.getElementById("newExpenseDesc").value == "" ||
           document.getElementById("newExpenseCategory").value == "" ||
           document.getElementById("newExpenseDate").value == "" ||
           ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newExpenseAmount").value)) {
           document.getElementById("alert-error-new-expense").style.display = "block";
+          $("#alert-success-new-expense").get(0).style.display = "none";
         } else {
           document.getElementById("alert-error-new-expense").style.display = "none";
+          $("#alert-success-new-expense").get(0).style.display = "none";
 
           /* Set the creation date. */
           var curDate = new Date();
@@ -414,6 +437,14 @@
 
       .btn-margin {
         margin-bottom: 20px;
+      }
+
+      .btn-grp-left {
+        width: 260px !important
+      }
+
+      .btn-grp-right {
+        width: 400px !important
       }
 
       /* FIXME: dirty hack but works for now.
@@ -929,6 +960,9 @@
 
           <!-- Conditionally shown. -->
 
+          <div id="alert-success-new-expense" class="alert alert-success" style="display: none">
+          </div>
+
           <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
             <strong>Error!</strong> Please enter a description, category, date, interval and amount.
           </div>
@@ -936,7 +970,10 @@
           <!-- Hidden field for the creation date. We need this for the edit-example-schedule-dialog. -->
           <input type="hidden" name="newExpenseCreatDate" id="newExpenseCreatDate" style="display: none" />
 
-          <input type="button" onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+          <div class="btn-group">
+            <input type="button" onclick="onNewEntry()" class="btn btn-large btn-primary btn-margin btn-grp-left" value="Submit" />
+            <input type="button" onclick="onNewEntryContinue()" class="btn btn-large btn-primary btn-margin btn-grp-right" value="Submit and Continue" />
+          </div>
 
         </form>
 

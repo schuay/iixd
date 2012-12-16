@@ -46,6 +46,7 @@
         $("#navbar-overview-config").get(0).style.display = "none";
 
         $("#new-expense-dialog").dialog("close");
+        $("#new-recurring-expense-dialog").dialog("close");
         $("#edit-example-expense-dialog").dialog("close");
         $("#edit-example-schedule-dialog").dialog("close");
         $("#advanced-search-dialog").dialog("close");
@@ -283,6 +284,20 @@
               curDate.getDate()+"/"+curDate.getFullYear();
 
           document.forms['newExpense'].submit();
+        }
+      }
+
+      function onNewRecEntry() {
+        if (document.getElementById("newRecExpenseDesc").value == "" ||
+          document.getElementById("newRecExpenseCategory").value == "" ||
+          document.getElementById("newRecExpenseDate").value == "" ||
+          ! /^[0-9]+(\.[0-9][0-9]?)?$/.test(document.getElementById("newRecExpenseAmount").value)) {
+          document.getElementById("alert-error-new-recexpense").style.display = "block";
+        } else {
+          document.getElementById("alert-error-new-recexpense").style.display = "none";
+
+          document.forms['newRecExpense'].reset();
+          $("#new-recurring-expense-dialog").dialog("close");
         }
       }
 
@@ -979,19 +994,19 @@
 
         <!-- The new recurring expense dialog. -->
 
-        <form id="new-recurring-expense-dialog">
+        <form id="new-recurring-expense-dialog" name="newRecExpense">
           <table class="table table-hover">
             <tr>
               <th>Description</th>
               <th>Category</th>
-              <th>Date</th>
+              <th>Start Date</th>
               <th>Interval</th>
               <th>Amount</th>
             </tr>
             <tr>
               <td><input type="text" placeholder="Description" class="input-block-level" id="newRecExpenseDesc" /></td>
               <td><input type="text" placeholder="Category" class="input-block-level" id="newRecExpenseCategory" data-provide="typeahead" /></td>
-              <td><input type="text" placeholder="Date" class="input-block-level" id="newRecExpenseDate" /></td>
+              <td><input type="text" placeholder="Start date" class="input-block-level" id="newRecExpenseDate" /></td>
               <td>
                 <select class="span2">
                   <option>yearly</option>
@@ -1007,10 +1022,10 @@
           <!-- Conditionally shown. -->
 
           <div id="alert-error-new-recexpense" class="alert alert-error" style="display: none">
-            <strong>Error!</strong> Please enter a description, category, date, interval and amount.
+            <strong>Error!</strong> Please enter a description, category, start date, interval and amount.
           </div>
 
-          <input type="button" onclick="onRecNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+          <input type="button" onclick="onNewRecEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
 
         </form>
 

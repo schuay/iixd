@@ -119,6 +119,10 @@
           source: categories,
           items: categories.length
         });
+        $("#navbarSearchField").typeahead({
+          source: categories,
+          items: categories.length
+        });
       });
 
       /* Overview page. */
@@ -403,7 +407,7 @@
                 <li>
                 <div class="input-append">
                   <form class="navbar-search" name="search-form">
-                    <input type="text" style="width: 130px"/>
+                    <input type="text" id="navbarSearchField" style="width: 130px"/>
                     <a class="btn" href="#" onClick="onSearchClick()"><i class="icon-search"></i></a>
                   </form>
                 </div>

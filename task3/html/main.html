@@ -28,6 +28,7 @@
 
       function resetNav() {
         $("#details-main").get(0).style.display = "none";
+        $("#details-page2").get(0).style.display = "none";
         $("#overview-main").get(0).style.display = "none";
         $("#schedule-main").get(0).style.display = "none";
         $("#settings-main").get(0).style.display = "none";
@@ -50,6 +51,13 @@
       function onDetailsClick() {
         resetNav();
         $("#details-main").get(0).style.display = "block";
+        $("#nav-details").get(0).className = "active";
+        $("#navbar-search").get(0).style.display = "block";
+      }
+
+      function onDetails2Click() {
+        resetNav();
+        $("#details-page2").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
       }
@@ -305,6 +313,17 @@
         window.location.search = "";
       }
 
+      function onNewExpenseMainClick() {
+        $("#new-expense-dialog").dialog({
+          position: { my: "left top", at: "left bottom", of: "#new-expense" }});
+        onNewExpenseClick();
+      }
+
+      function onNewExpensePage2Click() {
+        $("#new-expense-dialog").dialog({
+          position: { my: "left top", at: "left bottom", of: "#new-expense-page2" }});
+        onNewExpenseClick();
+      }
 
       function onNewExpenseClick() {
         $("#new-expense-dialog").dialog("open");
@@ -316,8 +335,7 @@
           autoOpen: false,
           resizable: false,
           draggable: false,
-          width: 693,
-          position: { my: "left top", at: "left bottom", of: "#new-expense" }});
+          width: 693});
         $("#edit-example-expense-dialog").dialog({
           title: "Edit Expense",
           autoOpen: false,
@@ -481,7 +499,7 @@
 
         <div id="details-main" class="span9" style="display: block">
 
-          <button id="new-expense" onclick="onNewExpenseClick()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
+          <button id="new-expense" onclick="onNewExpenseMainClick()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
 
           <h4>October 2012</h4>
           <table class="table table-bordered">
@@ -560,17 +578,87 @@
           </table>
           <div class="pagination pagination-centered">
             <ul>
-              <li><a href="#">Prev</a></li>
+              <li><a href="#" onClick="onDetails2Click()">Prev</a></li>
               <li><a href="#">June 2012</a></li>
               <li><a href="#">July 2012</a></li>
               <li><a href="#">August 2012</a></li>
-              <li><a href="#">September 2012</a></li>
+              <li><a href="#" onClick="onDetails2Click()">September 2012</a></li>
               <li class="active">
                 <a href="#">October 2012</a>
               </li>
               <li class="disabled">
                 <a href="#">Next</a>
               </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Details page two. -->
+
+        <div id="details-page2" class="span9" style="display: none">
+
+          <button id="new-expense-page2" onclick="onNewExpensePage2Click()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
+
+          <h4>September 2012</h4>
+          <table class="table table-bordered">
+            <caption></caption>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Created on</th>
+                <th>Amount</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rent</td>
+                <td>Rent</td>
+                <td>10.09.2012</td>
+                <td>01.06.2012</td>
+                <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Power</td>
+                <td>Power</td>
+                <td>07.09.2012</td>
+                <td>01.06.2012</td>
+                <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Gas</td>
+                <td>Gas</td>
+                <td>01.09.2012</td>
+                <td>01.06.2012</td>
+                <td>200 &euro;</td>
+                <td>
+                  <a class="btn" href="#"><i class="icon-edit"></i></a>
+                  <a class="btn" href="#"><i class="icon-remove"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagination pagination-centered">
+            <ul>
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">June 2012</a></li>
+              <li><a href="#">July 2012</a></li>
+              <li><a href="#">August 2012</a></li>
+              <li class="active">
+                <a href="#">September 2012</a>
+              </li>
+              <li><a href="#" onClick="onDetailsClick()">October 2012</a></li>
+              <li><a href="#" onClick="onDetailsClick()">Next</a></li>
             </ul>
           </div>
         </div>

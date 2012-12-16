@@ -340,6 +340,10 @@
         $("#new-expense-dialog").dialog("open");
       }
 
+      function onNewRecurringExpenseClick() {
+        $("#new-recurring-expense-dialog").dialog("open");
+      }
+
       $(function() {
         $("#new-expense-dialog").dialog({
           title: "New Expense",
@@ -347,6 +351,13 @@
           resizable: false,
           draggable: false,
           width: 693});
+        $("#new-recurring-expense-dialog").dialog({
+          title: "New Recurring Expense",
+          autoOpen: false,
+          resizable: false,
+          draggable: false,
+          width: 693,
+          position: { my: "left top", at: "left top", of: "#new-recurring-expense" }});
         $("#edit-example-expense-dialog").dialog({
           title: "Edit Expense",
           autoOpen: false,
@@ -739,9 +750,12 @@
           </div>
         </div>
 
-        <!-- The details main screen. -->
+        <!-- The recurring expenses main screen. -->
 
         <div id="schedule-main" class="span9" style="display: none">
+
+          <button id="new-recurring-expense" onclick="onNewRecurringExpenseClick()" class="btn btn-block btn-large btn-primary btn-margin">Add New Recurring Expense</button>
+
           <table class="table table-hover">
             <thead>
               <tr>
@@ -901,6 +915,47 @@
               <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" /></td>
               <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
               <td><input type="text" placeholder="Amount" class="input-block-level"id="newExpenseAmount" name="newExpenseAmount"/></td>
+            </tr>
+          </table>
+
+          <!-- Conditionally shown. -->
+
+          <div id="alert-error-new-expense" class="alert alert-error" style="display: none">
+            <strong>Error!</strong> Please enter a description, category, date, interval and amount.
+          </div>
+
+          <!-- Hidden field for the creation date. We need this for the edit-example-schedule-dialog. -->
+          <input type="hidden" name="newExpenseCreatDate" id="newExpenseCreatDate" style="display: none" />
+
+          <input type="button" onclick="onNewEntry()" class="btn btn-block btn-large btn-primary btn-margin" value="Submit" />
+
+        </form>
+
+        <!-- The new recurring expense dialog. -->
+
+        <form id="new-recurring-expense-dialog" name="newExpense" action="main.html" method="get">
+          <table class="table table-hover">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Interval</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Description" class="input-block-level" id="newExpenseDesc" name="newExpenseDesc"/></td>
+              <td><input type="text" placeholder="Category" class="input-block-level" id="newExpenseCategory" name="newExpenseCategory" data-provide="typeahead" /></td>
+              <td><input type="text" placeholder="Date" class="input-block-level" id="newExpenseDate" name="newExpenseDate"/></td>
+              <td>
+                <select class="span2" name="newExpenseInterval">
+                  <option>none</option>
+                  <option>yearly</option>
+                  <option>monthly</option>
+                  <option>weekly</option>
+                  <option>daily</option>
+                </select>
+              </td>
+              <td><input type="text" placeholder="Amount" class="input-block-level" id="newExpenseAmount" name="newExpenseAmount"/></td>
             </tr>
           </table>
 

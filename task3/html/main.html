@@ -56,6 +56,7 @@
         $("#details-main").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
+        $("#section-header").get(0).innerHTML = "Expenses October 2012";
       }
 
       function onDetails2Click() {
@@ -65,6 +66,7 @@
         $("#details-page2").get(0).style.display = "block";
         $("#nav-details").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
+        $("#section-header").get(0).innerHTML = "Expenses September 2012";
       }
 
       function onSearchClick() {
@@ -73,6 +75,7 @@
         $("#navbar-search").get(0).style.display = "block";
         document.forms['search-form'].reset();
         document.forms['advanced-search-form'].reset();
+        $("#section-header").get(0).innerHTML = "Search Results";
       }
 
       function onOverviewClick() {
@@ -80,6 +83,7 @@
         $("#overview-main").get(0).style.display = "block";
         $("#nav-overview").get(0).className = "active";
         $("#navbar-overview-config").get(0).style.display = "block";
+        $("#section-header").get(0).innerHTML = "Graphs";
 				selectCategory();
       }
 
@@ -88,6 +92,7 @@
         $("#schedule-main").get(0).style.display = "block";
         $("#nav-schedule").get(0).className = "active";
         $("#navbar-search").get(0).style.display = "block";
+        $("#section-header").get(0).innerHTML = "Recurring Expenses";
 				selectCategory();
       }
 
@@ -95,6 +100,7 @@
         resetNav();
         $("#settings-main").get(0).style.display = "block";
         $("#nav-settings").get(0).className = "active";
+        $("#section-header").get(0).innerHTML = "Settings";
 				clearAlerts();
       }
 
@@ -404,7 +410,7 @@
     <div class="container">
       <div class="row">
         <div class="page-header pagination-centered">
-          <h1>Finance Buddy <small>Personal finance is fun! :)</small></h1>
+          <h2>Finance Buddy <small id="section-header">Expenses October 2012</small></h2>
         </div>
         <div class="span3">
           <div class="row">
@@ -533,14 +539,6 @@
 
           <button id="new-expense" onclick="onNewExpenseMainClick()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
 
-          <table>
-            <tr>
-              <td class="span3"><h4>October 2012</h4></td>
-              <td>
-                <img id="oct2012_img_details" class="span3" src="../img/oct2012.svg" class="image-rounded" />
-              </td>
-            </tr>
-          </table>
           <table class="table table-bordered">
             <caption></caption>
             <thead>
@@ -638,14 +636,6 @@
 
           <button id="new-expense-page2" onclick="onNewExpensePage2Click()" class="btn btn-block btn-large btn-primary btn-margin">Add New Expense</button>
 
-          <table>
-            <tr>
-              <td class="span3"><h4>September 2012</h4></td>
-              <td>
-                <img id="sep2012_img_details" class="span3" src="../img/sep2012.svg" class="image-rounded" />
-              </td>
-            </tr>
-          </table>
           <table class="table table-bordered">
             <caption></caption>
             <thead>
@@ -752,7 +742,6 @@
         <!-- The details main screen. -->
 
         <div id="schedule-main" class="span9" style="display: none">
-          <h4>Recurring Expenses</h4>
           <table class="table table-bordered">
             <thead>
               <tr>

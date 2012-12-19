@@ -106,7 +106,8 @@ des Formulars werden erst angezeigt wenn sie relevant sind.
 \caption{Registration} \label{fig:registration}
 \end{figure}
 
-% TODO: Text
+Bei dem Registrierungsinterface wurden die Platzraubenden Labels links neben den Textfeldern entfernt, 
+und komplett durch Placeholdertexte in den Textfeldern ersetzt. Das führt zu einer harmonischeren Ästhetik und spart Platz.
 
 \clearpage
 \subsubsection{Advanced Search}
@@ -134,7 +135,17 @@ des Formulars werden erst angezeigt wenn sie relevant sind.
 \caption{New Expense} \label{fig:expenses-new}
 \end{figure}
 
-% TODO: Text
+Die wichtigste Änderung ist das Herausnehmen der Eingabezeile in ein eigenes Popup, das durch den "Add New Expense" Button
+geöffnet wird. Das führt zu einer verbesserten Übersichtlichkeit und zu einer verständlicheren Bedienung.
+In dem Popup hat man nach Eingabe der Daten wahlweise die Möglichkeit, weitere Datensätze einzugeben oder das Popup wieder
+zu schließen. Außerdem wurde die Bearbeitung der wiederkehrenden Ausgaben aus dem "Expenses" Interface entfernt und dafür
+ein eigener Menüpunkt "Recurring Expenses" angelegt. Dort können bequem alle wiederkehrenden Ausgaben betrachtet und
+bearbeitet, sowie neue Ausgaben eingefügt werden. Der Unterschied zum Eingabefenster für "normale" Ausgaben ist,
+dass man Anstatt eines "Dates" ein "Start Date" festlegt und zusätzlich ein Intervall.
+Weiters werden nur noch die Ausgaben eines Monats aufgelistet. Man kann diesen in der unteren leiste auswählen. Dadurch fällt
+die Zusammenfassungszeile nach jedem Monat in der Liste weg, stattdessen wird links unten in einem Kasten die Zusammenfassung
+für den ausgewählten Monat inklusive Farbbalken (rot bei Überschreitung, grün bei noch verfügbarem Betrag) dargestellt.
+Das Interface ist dadurch wesentlich übersichtlicher geworden.
 
 \clearpage
 \subsubsection{Settings}
